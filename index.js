@@ -10,6 +10,7 @@ const { PORT, DB_CONNECTION_STRING } = process.env;
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "Public")));
 
 mongoose.connect(DB_CONNECTION_STRING, {
   useNewUrlParser: true,
@@ -22,8 +23,9 @@ db.once("open", () => {
   console.log("Database connected");
 });
 
-app.get("/", (req, res) => {
-  res.send("home");
+app.get("/", async (req, res) => {
+  const products = await Products.find({});
+  res.render("home", { products });
 });
 
 app.get("/products", async (req, res) => {
