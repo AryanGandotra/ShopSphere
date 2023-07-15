@@ -1,0 +1,84 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/home.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/base.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+
+    <%- include('./partials/nav') %>
+
+        <top>
+            <div class="top">
+                <div class="top-left">
+                    <h1>Summer Sale</h1>
+                    <h2>Grab Upto 50% Off On Selected Headphone</h2>
+                    <button>Shop Now</button>
+                </div>
+                <div class="top-right">
+                    <img src="/images/banner-img.png" alt="" />
+                </div>
+            </div>
+        </top>
+
+        <div class="products">
+            <% products.forEach(function(product) { %>
+                    <div class="product">
+                        <div class="product-img">
+                            <img src="<%=product.imageUrl %>" />
+                        </div>
+
+                        <div class="product-details">
+                            <div class="product-name-price">
+                                <div class="product-name">
+                                    <% var truncatedName=product.name.substring(0, 20);
+                                        truncatedName=truncatedName+"..."; %>
+                                        <%= truncatedName %>
+                                </div>
+
+
+                                <div class=" product-price">
+                                    $<%= product.price %>
+                                </div>
+                            </div>
+                            <!-- <p>
+                        <%= product.category %>
+                    </p> -->
+                            <div class="product-desc">
+                                <% var truncatedDesc=product.description.substring(0, 60);
+                                    truncatedDesc=truncatedDesc+"..."; %>
+                                    <%= truncatedDesc %>
+                            </div>
+
+                            <span class="buttons">
+                                <button class="add-to-cart">Add to cart</button>
+                                <a href="/products/<%= product._id %>" class="view-product">
+                                View product
+                            </a>
+                            </span>
+
+                        </div>
+                    </div>
+                <% }); %>
+
+        </div>
+
+        <%- include('./partials/footer') %>
+
+
+
+</body>
+
+
+</html>
