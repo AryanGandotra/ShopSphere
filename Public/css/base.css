@@ -129,10 +129,12 @@ nav ul img {
     margin-right: 10px;
 }
 
+
 footer {
     background-color: #FBEFE4;
     color: #013D28;
     padding: 60px 0;
+    bottom: 0;
 }
 
 .footer {
