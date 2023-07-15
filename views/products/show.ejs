@@ -1,74 +1,96 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/show.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/stars.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/base.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
 </head>
 
-<style>
-    body {
-        background-color: #f5f5f5;
-        font-family: Arial, Helvetica, sans-serif;
-        color: #333;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-    }
-
-    h1 {
-        text-align: center;
-        margin: 40px 0;
-    }
-
-    .product {
-        background-color: #fff;
-        border-radius: 5px;
-        padding: 20px;
-        margin: 0 auto 20px;
-        max-width: 600px;
-    }
-
-    img {
-        width: 300px;
-        height: 300px;
-        margin: 0 auto;
-        display: block;
-        mix-blend-mode: multiply;
-
-    }
-
-    a {
-        display: block;
-        text-align: center;
-        margin: 20px 0;
-        color: #333;
-        text-decoration: none;
-    }
-
-    a:hover {
-        text-decoration: underline;
-    }
-</style>
 
 <body>
-    <div class="product">
-        <img src="<%= product.imageUrl %>" />
-        <h1>
-            <%= product.title %>
-        </h1>
-        <p>
-            <%= product.description %>
-        </p>
-        <p>
-            <%= product.price %>
-        </p>
-        <p>
-            <%= product.category %>
-        </p>
-        <a href="/products">Back</a>
-    </div>
+    <%- include('../partials/nav') %>
+
+        <div class="product">
+
+            <div class="left">
+                <div class="left-image">
+                    <img src="<%= product.imageUrl %>" />
+                </div>
+            </div>
+
+            <div class="right">
+                <div class="right-button">
+                    <a href="/"><i class="fa-solid fa-chevron-left"></i> &nbsp;Back</a>
+                </div>
+                <div class="right-title">
+                    <h1>
+                        <%= product.name %>
+                    </h1>
+                </div>
+                <hr>
+                <div class="right-description">
+                    <p>
+                        <%= product.description %>
+                    </p>
+                    <br>
+                    <p>
+                        Category: <%= product.category %>
+                    </p>
+                </div>
+                <div class="rating">
+                    <fieldset class="starability-coinFlip">
+                        <input type="radio" id="first-rate1" name="review[rating]" value="1" checked />
+                        <label for="first-rate1" title="Terrible">1 star</label>
+                        <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                        <label for="first-rate2" title="Not good">2 stars</label>
+                        <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                        <label for="first-rate3" title="Average">3 stars</label>
+                        <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                        <label for="first-rate4" title="Very good">4 stars</label>
+                        <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                        <label for="first-rate5" title="Amazing">5 stars</label>
+                    </fieldset>
+
+                    <div class="no-rating">(121)</div>
+                </div>
+                <hr>
+                <div class="right-price">
+                    <h2>
+                        $ <%= product.price %> or <%= Math.round(((product.price)/6)*100)/ 100 %> /month
+                    </h2>
+                </div>
+                <hr>
+
+                <div class="product-count">
+                    <div class="product-count-title">
+                        <h3>Quantity</h3>
+                    </div>
+                    <div class="product-count-buttons">
+                        <button class="product-count-button" id="minus">-</button>
+                        <input type="text" id="count" value="1" />
+                        <button class="product-count-button" id="plus">+</button>
+                    </div>
+                </div>
+
+                <div class="buy-cart">
+                    <button class="buy-product" id="buy-product">Buy Now</button>
+                    <button class="add-to-cart" id="add-to-cart">Add to Cart</button>
+                </div>
+
+            </div>
+        </div>
+
+        <%- include('../partials/footer') %>
 
 </body>
 
