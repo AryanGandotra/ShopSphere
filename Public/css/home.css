@@ -2,8 +2,10 @@ top {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px auto;
+    margin: 0px auto;
+    margin-bottom: 50px;
     color: #013D28;
+    padding-top: 90px;
 }
 
 top div {
@@ -14,6 +16,7 @@ top div {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+    border-radius: 10px;
 }
 
 .top-left {
@@ -112,6 +115,11 @@ top div {
     width: 50%;
     height: 50%;
     mix-blend-mode: multiply;
+}
+
+.product:hover .product-img img {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
 }
 
 .product-details {
