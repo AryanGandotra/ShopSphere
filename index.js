@@ -62,13 +62,21 @@ app.delete("/products/:id", async (req, res) => {
   const { id } = req.params;
   const deletedProduct = await Products.findByIdAndDelete(id);
   console.log(deletedProduct);
-  res.redirect("/");  
+  res.redirect("/");
 });
 
 app.get("/products/:id/edit", async (req, res) => {
   const { id } = req.params;
   const product = await Products.findById(id);
   res.render("products/edit", { product });
+});
+
+app.get("/login", (req, res) => {
+  res.render("Auth/login");
+});
+
+app.get("/signUp", (req, res) => {
+  res.render("Auth/signUp");
 });
 
 app.listen(PORT, () => {
