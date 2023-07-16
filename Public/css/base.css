@@ -23,7 +23,13 @@ nav {
     justify-content: space-between;
     align-items: center;
     font-size: 1rem;
-    padding: 0 40px;
+    padding: 10px 40px;
+    background-color: #fff;
+    position: fixed;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    z-index: 999;
+    height: 70px;
 }
 
 nav ul {
@@ -39,7 +45,6 @@ ul li {
 .menu {
     list-style: none;
     padding: 0;
-    margin: 0;
 }
 
 .dropdown {
@@ -103,9 +108,7 @@ ul input {
 }
 
 nav ul img {
-    width: 70px;
-    height: 70px;
-    margin-left: 10px;
+    height: 50px;
     mix-blend-mode: multiply;
 }
 
