@@ -1,3 +1,14 @@
+.back-button{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    color: #013D28;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
 .heading {
     text-align: center;
     margin-top: 50px;
