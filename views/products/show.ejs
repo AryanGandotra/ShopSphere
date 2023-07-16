@@ -85,8 +85,23 @@
                 <div class="buy-cart">
                     <button class="buy-product" id="buy-product">Buy Now</button>
                     <button class="add-to-cart" id="add-to-cart">Add to Cart</button>
-                    <a href="/products/<%= product._id%>/edit" > <button class="edit-product">Edit Product</button>
-                        </a>
+                    <a href="/products/<%= product._id%>/edit">
+                        <div class="edit">
+                            <i class="fa-solid fa-pen-to-square "></i>
+                        </div>
+                    </a>
+
+                    <!-- <a href="/products/<%= product._id%>">
+                        <div class="delete">
+                            <i class="fa-solid fa-trash"></i>
+                        </div> -->
+
+                    <form method="post" action="/products/<%= product._id%>?_method=DELETE">
+                        <button class="delete">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </form>
+                    <!-- </a> -->
                 </div>
 
             </div>
