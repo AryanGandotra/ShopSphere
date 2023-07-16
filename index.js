@@ -58,6 +58,13 @@ app.get("/products/:id", async (req, res) => {
   res.render("products/show", { product });
 });
 
+app.delete("/products/:id", async (req, res) => {
+  const { id } = req.params;
+  const deletedProduct = await Products.findByIdAndDelete(id);
+  console.log(deletedProduct);
+  res.redirect("/");  
+});
+
 app.get("/products/:id/edit", async (req, res) => {
   const { id } = req.params;
   const product = await Products.findById(id);
@@ -66,5 +73,5 @@ app.get("/products/:id/edit", async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server running on Port ${PORT}`);
-  console.log(`http://localhost:${PORT}/products`);
+  console.log(`http://localhost:${PORT}/`);
 });
