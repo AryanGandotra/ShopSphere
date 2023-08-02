@@ -75,8 +75,16 @@ app.get("/login", (req, res) => {
   res.render("Auth/login");
 });
 
+app.post("/login", (req, res) => {
+  res.send(req.body);
+});
+
 app.get("/signUp", (req, res) => {
   res.render("Auth/signUp");
+});
+
+app.post("/signup", (req, res) => {
+  res.send(req.body);
 });
 
 app.listen(PORT, () => {
