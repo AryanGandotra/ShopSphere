@@ -24,8 +24,19 @@
         </li>
     </ul>
     <ul>
-        <li class="user"><i class="fa-solid fa-user"></i><a href="/login">Login</a></li>
-        <li class="user"><i class="fa-solid fa-user"></i><a href="/signUp">SignUp</a></li>
-        <li class="cart"><i class="fa-solid fa-cart-shopping"></i>Cart</li>
+        <% if(!currentUser){ %>
+            <li class="user"><i class="fa-solid fa-user"></i><a href="/login">Login</a></li>
+            <li class="user"><i class="fa-solid fa-user"></i><a href="/signUp">SignUp</a></li>
+            <% } else{ %>
+                <a class="nav-link" href="#">
+                    <%= currentUser.username %>
+                </a>
+                <li class="user"><a href="/logout">Logout</a></li>
+                <li class="cart"><i class="fa-solid fa-cart-shopping"></i><a href="">Cart</a></li>
+
+                <% } %>
+
+
+
     </ul>
 </nav>
