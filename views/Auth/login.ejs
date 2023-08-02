@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <!-- <%- include('../partials/nav') %> -->
+    <%- include('../partials/nav') %>
 
     <div class="form-container card">
         <img src="https://static.vecteezy.com/system/resources/previews/004/299/835/original/online-shopping-on-phone-buy-sell-business-digital-web-banner-application-money-advertising-payment-ecommerce-illustration-search-free-vector.jpg"
@@ -29,8 +29,8 @@
 
             <form action="/login" method="post">
                 <div class=" mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" name="email" required>
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
                     <div class="invalid-feedback">
                         Please enter a valid email.
                     </div>
@@ -47,7 +47,7 @@
             </form>
         </div>
     </div>
-    <!-- <%- include('../partials/footer') %> -->
+    <%- include('../partials/footer') %>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
