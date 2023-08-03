@@ -9,7 +9,7 @@ const passport = require("passport");
 const session = require("express-session");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user");
-const { isLogged, storeReturnTo,login } = require("./middleware");
+const { isLogged, storeReturnTo, login } = require("./middleware");
 
 const { PORT, DB_CONNECTION_STRING } = process.env;
 
@@ -80,7 +80,7 @@ app.put("/products/:id", isLogged, async (req, res) => {
   res.redirect(`/products/${product._id}`);
 });
 
-app.get("/products/:id", isLogged, async (req, res) => {
+app.get("/products/:id", async (req, res) => {
   const { id } = req.params;
   const product = await Products.findById(id);
   res.render("products/show", { product });
@@ -107,9 +107,6 @@ app.post(
   "/login",
   storeReturnTo,
   passport.authenticate("local", { failureRedirect: "/login" }),
-  // (req, res) => {
-  //   res.redirect("/");
-  // },
   login
 );
 
@@ -145,6 +142,17 @@ app.get("/logout", (req, res) => {
     res.redirect("/login");
   });
 });
+
+app.get("/cart/:id", async (req, res) => {
+  const { id } = req.params;
+  const user = await User.findById(id);
+  res.render("cart/index", { user });
+});
+// app.get("/cart/:id", isLogged, async (req, res) => {
+//   const { id } = req.params;
+//   const user = await User.findById(id);
+//   res.render("cart/index", { user });
+// });
 
 // app.get("/fakeUser", async (req, res) => {
 //   const user = new User({ email: "a@gmail.com", username: "a" });
