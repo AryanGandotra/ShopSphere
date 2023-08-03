@@ -13,8 +13,10 @@
             </ul>
         </li>
         <li><a href="#">Deals</a></li>
-        <li><a href="/products/new">Add Product</a></li>
-        <li><a href="/">All Products</a></li>
+        <% if(currentUser && currentUser.username=="Admin" ){ %>
+            <li><a href="/products/new">Add Product</a></li>
+            <% } %>
+                <li><a href="/">All Products</a></li>
     </ul>
 
     <ul>
@@ -32,7 +34,9 @@
                     <%= currentUser.username %>
                 </a>
                 <li class="user"><a href="/logout">Logout</a></li>
-                <li class="cart"><i class="fa-solid fa-cart-shopping"></i><a href="">Cart</a></li>
+                <li class="cart"><i class="fa-solid fa-cart-shopping"></i><a href="/cart/<%=currentUser._id %>">Cart</a>
+                </li>
+
 
                 <% } %>
 
