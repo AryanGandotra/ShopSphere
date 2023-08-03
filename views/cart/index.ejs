@@ -1,0 +1,72 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/base.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/cart.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+
+        <div class="main">
+            <div class="welcome">
+                Welcome, <%=user.username %>
+                    <div class="Total">
+                        <a href="#">CheckOut: $4000</a>
+                    </div>
+            </div>
+
+            <div class="cart-container">
+                <div class="cart-heading">
+                    <span>Item</span>
+                    <span>Description</span>
+                    <span>Quantity</span>
+                    <span>Shipping</span>
+                    <span>Price</span>
+                </div>
+                <div class="cart-item">
+                    <div class="cart-item-child-1 cart-item-child">
+                        <div>
+                            <img src="https://images.pexels.com/photos/1667088/pexels-photo-1667088.jpeg?cs=srgb&dl=pexels-laryssa-suaid-1667088.jpg&fm=jpg"
+                                alt="">
+                        </div>
+                        <div>
+                            <div class="item-name">
+                                <span>Item name</span>
+                                <span class="unit-left">30 units left</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cart-item-child">
+                        Item Description
+                    </div>
+
+                    <div class="cart-item-child">
+                        3
+                    </div>
+
+                    <div class="cart-item-child">
+                        Delivery
+                    </div>
+
+                    <div class="cart-item-child">
+                        $1122
+                    </div>
+
+
+                </div>
+                
+            </div>
+
+        </div>
+
+
+
+        </div>
+</body>
+
+</html>
