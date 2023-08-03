@@ -73,36 +73,40 @@
 
                 <div class="product-count">
                     <div class="product-count-title">
-                        <h3>Quantity</h3>
+                        <h3>Quantity: <%=product.quantity %>
+                        </h3>
                     </div>
-                    <div class="product-count-buttons">
+                    <!-- <div class="product-count-buttons">
                         <button class="product-count-button" id="minus">-</button>
                         <input type="text" id="count" value="1" />
                         <button class="product-count-button" id="plus">+</button>
-                    </div>
+                    </div> -->
                 </div>
+
+
 
                 <div class="buy-cart">
                     <button class="buy-product" id="buy-product">Buy Now</button>
                     <button class="add-to-cart" id="add-to-cart">Add to Cart</button>
-                    <a href="/products/<%= product._id%>/edit">
-                        <div class="edit">
-                            <i class="fa-solid fa-pen-to-square "></i>
-                        </div>
-                    </a>
 
-                    <!-- <a href="/products/<%= product._id%>">
-                        <div class="delete">
-                            <i class="fa-solid fa-trash"></i>
-                        </div> -->
 
-                    <form method="post" action="/products/<%= product._id%>?_method=DELETE">
-                        <button class="delete">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                    </form>
-                    <!-- </a> -->
+                    <% if(currentUser && currentUser.username=="Admin" ){ %>
+                        <a href="/products/<%= product._id%>/edit">
+                            <div class="edit">
+                                <i class="fa-solid fa-pen-to-square "></i>
+                            </div>
+                        </a>
+
+                        <form method="post" action="/products/<%= product._id%>?_method=DELETE">
+                            <button class="delete">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </form>
+                        <% } %>
+
                 </div>
+
+
 
             </div>
         </div>
