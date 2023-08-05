@@ -77,7 +77,9 @@
                         </h3>
                         <br>
                         <p>
-                            <%= no_of_people %> people have this item in their cart
+                            <% if(no_of_people>0){%>
+                                <%= no_of_people %> people have this item in their cart
+                                    <% } %>
                         </p>
                     </div>
                     <!-- <div class="product-count-buttons">
