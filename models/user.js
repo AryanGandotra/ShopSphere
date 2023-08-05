@@ -8,6 +8,12 @@ const UserSchema = new Schema({
     required: [true, "Email is required"],
     unique: true,
   },
+  products: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Product",
+    },
+  ],
 });
 
 UserSchema.plugin(passportLocalMongoose);
