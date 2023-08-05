@@ -9,7 +9,9 @@ const passport = require("passport");
 const session = require("express-session");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user");
+const Cart = require("./models/cart");
 const { isLogged, storeReturnTo, login } = require("./middleware");
+const Product = require("./models/product");
 
 const { PORT, DB_CONNECTION_STRING } = process.env;
 
@@ -82,8 +84,10 @@ app.put("/products/:id", isLogged, async (req, res) => {
 
 app.get("/products/:id", async (req, res) => {
   const { id } = req.params;
+  const cart_item = await Cart.find({ product: id });
+  const no_of_people = cart_item.length;
   const product = await Products.findById(id);
-  res.render("products/show", { product });
+  res.render("products/show", { product, no_of_people });
 });
 
 app.delete("/products/:id", isLogged, async (req, res) => {
@@ -143,11 +147,71 @@ app.get("/logout", (req, res) => {
   });
 });
 
-app.get("/cart/:id", async (req, res) => {
-  const { id } = req.params;
-  const user = await User.findById(id);
-  res.render("cart/index", { user });
+app.get("/cart/:userId", async (req, res) => {
+  const { userId } = req.params;
+  const user = await User.findById(userId);
+  const cart = await Cart.find({ user: userId })
+    .populate({
+      path: "product",
+    })
+    .populate({
+      path: "user",
+    });
+  // console.log(cart);
+  res.render("cart/index", { cart, user });
+  // res.render("cart/index", { currentUser: user });
 });
+
+// app.post("/cart/:userId/:id", async (req, res) => {
+//   const { userId, id } = req.params;
+//   const { quantity } = req.body;
+//   const currentUser = await User.findById(userId);
+//   const product = await Product.findById(id);
+//   const cartItem = new Cart({
+//     product: product,
+//     quantity: quantity,
+//     user: userId,
+//   });
+
+//   product.quantity = product.quantity - quantity;
+//   console.log(quantity);
+//   console.log(product.quantity);
+//   await product.save();
+
+//   currentUser.products.push(cartItem);
+//   await cartItem.save();
+//   await currentUser.save();
+//   res.redirect(`/cart/${userId}`);
+// });
+
+app.post("/cart/:userId/:id", async (req, res) => {
+  const { userId, id } = req.params;
+  const { quantity } = req.body;
+  const currentUser = await User.findById(userId);
+  const product = await Product.findById(id);
+
+  const cartItem = await Cart.findOne({ product: id, user: userId });
+
+  if (cartItem) {
+    cartItem.quantity += parseInt(quantity, 10);
+    await cartItem.save();
+  } else {
+    const newCartItem = new Cart({
+      product: product,
+      quantity: parseInt(quantity, 10),
+      user: userId,
+    });
+    await newCartItem.save();
+    currentUser.products.push(newCartItem);
+    await currentUser.save();
+  }
+
+  product.quantity -= parseInt(quantity, 10);
+  await product.save();
+
+  res.redirect(`/cart/${userId}`);
+});
+
 // app.get("/cart/:id", isLogged, async (req, res) => {
 //   const { id } = req.params;
 //   const user = await User.findById(id);
