@@ -14,11 +14,6 @@ const cartItemSchema = new Schema(
       min: 1,
       default: 1,
     },
-    total: {
-      type: Number,
-      required: [true, "Total is required"],
-      min: 0,
-    },
     user: {
       type: Schema.Types.ObjectId,
       ref: "User",
