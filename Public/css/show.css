@@ -205,7 +205,30 @@
     border: 1px solid #013D28;
     border-radius: 40px;
     cursor: pointer;
+    padding-left: 5px;
 }
+
+.add-to-cart select {
+    width: 30%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #013D28;
+}
+
+.add-to-cart-btn {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    /* border: 1px solid #013D28; */
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #013D28;
+}
+
 
 .edit {
     /* width: 20%; */
@@ -230,5 +253,5 @@
     background-color: transparent;
     border: none;
     outline: none;
-    cursor: pointer;    
+    cursor: pointer;
 }
