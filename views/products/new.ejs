@@ -20,9 +20,9 @@
 
 <body>
     <%- include('../partials/nav') %>
-    <div class="back-button">
-        <a href="/"><i class="fa-solid fa-chevron-left"></i> &nbsp;Back</a>
-    </div>
+        <div class="back-button">
+            <a href="/"><i class="fa-solid fa-chevron-left"></i> &nbsp;Back</a>
+        </div>
         <h1 class="heading">Add a New Product</h1>
 
         <div class="form-container">
@@ -47,6 +47,18 @@
                     </div>
                     <div class="invalid-feedback">
                         Please enter a Product Category.
+                    </div>
+
+                </div>
+
+                <div class="mb-3">
+                    <label for="product-quantity" class="form-label">Product Quantity</label>
+                    <input type="text" class="form-control" id="product-quantity" required name="product[quantity]">
+                    <div class="valid-feedback">
+                        Looks Good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter a Product Quantity.
                     </div>
 
                 </div>
