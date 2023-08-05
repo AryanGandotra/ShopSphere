@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" media="screen" href="/css/base.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/css/cart.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
 </head>
 
@@ -13,9 +16,14 @@
 
         <div class="main">
             <div class="welcome">
-                Welcome, <%=user.username %>
+                Welcome,<%= user.username %>
                     <div class="Total">
-                        <a href="#">CheckOut: $4000</a>
+                        <% var total=0; %>
+                            <% cart.forEach(element=> { %>
+                                <% total +=element.product.price * element.quantity; %>
+                                    <% }); %>
+                                        <a href="#">Total Items: <%= cart.length %></a>
+                                        <a href="#">Total Price: $<%= total %></a>
                     </div>
             </div>
 
@@ -25,41 +33,48 @@
                     <span>Description</span>
                     <span>Quantity</span>
                     <span>Shipping</span>
-                    <span>Price</span>
+                    <span>Price/unit</span>
                 </div>
-                <div class="cart-item">
-                    <div class="cart-item-child-1 cart-item-child">
-                        <div>
-                            <img src="https://images.pexels.com/photos/1667088/pexels-photo-1667088.jpeg?cs=srgb&dl=pexels-laryssa-suaid-1667088.jpg&fm=jpg"
+                <% cart.forEach(element=> {%>
+
+                    <div class="cart-item">
+                        <div class="cart-item-child-1 cart-item-child">
+                            <div>
+                                <img src=<%=element.product.imageUrl%>
                                 alt="">
-                        </div>
-                        <div>
-                            <div class="item-name">
-                                <span>Item name</span>
-                                <span class="unit-left">30 units left</span>
+                            </div>
+                            <div>
+                                <div class="item-name">
+                                    <span>
+                                        <a href="/products/<%=element.product._id%>">
+                                            <%=element.product.name%>
+                                        </a>
+                                    </span>
+                                    <span class="unit-left">
+                                        <%= element.product.quantity %> units left
+                                    </span>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="cart-item-child desc">
+                            <%=element.product.description%>
+                        </div>
+
+                        <div class="cart-item-child">
+                            <%=element.quantity%>
+                        </div>
+
+                        <div class="cart-item-child">
+                            Delivery
+                        </div>
+
+                        <div class="cart-item-child">
+                            $<%=element.product.price%>
+                        </div>
                     </div>
+                    <% }); %>
 
-                    <div class="cart-item-child">
-                        Item Description
-                    </div>
-
-                    <div class="cart-item-child">
-                        3
-                    </div>
-
-                    <div class="cart-item-child">
-                        Delivery
-                    </div>
-
-                    <div class="cart-item-child">
-                        $1122
-                    </div>
-
-
-                </div>
-                
             </div>
 
         </div>
