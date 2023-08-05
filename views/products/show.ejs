@@ -73,8 +73,12 @@
 
                 <div class="product-count">
                     <div class="product-count-title">
-                        <h3>Quantity: <%=product.quantity %>
+                        <h3>Available Quantity: <%=product.quantity %>
                         </h3>
+                        <br>
+                        <p>
+                            <%= no_of_people %> people have this item in their cart
+                        </p>
                     </div>
                     <!-- <div class="product-count-buttons">
                         <button class="product-count-button" id="minus">-</button>
@@ -87,22 +91,36 @@
 
                 <div class="buy-cart">
                     <button class="buy-product" id="buy-product">Buy Now</button>
-                    <button class="add-to-cart" id="add-to-cart">Add to Cart</button>
 
+                    <% if(currentUser){%>
 
-                    <% if(currentUser && currentUser.username=="Admin" ){ %>
-                        <a href="/products/<%= product._id%>/edit">
-                            <div class="edit">
-                                <i class="fa-solid fa-pen-to-square "></i>
-                            </div>
-                        </a>
-
-                        <form method="post" action="/products/<%= product._id%>?_method=DELETE">
-                            <button class="delete">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
+                        <form action="/cart/<%= currentUser._id %>/<%= product._id%>" method="post" class="add-to-cart">
+                            <select name="quantity" id="quantity">
+                                <% for(var i=1;i<=product.quantity/2;i++){ %>
+                                    <option value="<%=i%>">
+                                        <%=i%>
+                                    </option>
+                                    <% } %>
+                            </select>
+                            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
                         </form>
-                        <% } %>
+                        <%} %>
+
+
+                            <% if(currentUser && currentUser.username=="Admin" ){ %>
+
+                                <a href="/products/<%= product._id%>/edit">
+                                    <div class="edit">
+                                        <i class="fa-solid fa-pen-to-square "></i>
+                                    </div>
+                                </a>
+
+                                <form method="post" action="/products/<%= product._id%>?_method=DELETE">
+                                    <button class="delete">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </form>
+                                <% } %>
 
                 </div>
 
