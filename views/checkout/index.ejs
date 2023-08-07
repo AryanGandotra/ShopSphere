@@ -1,0 +1,93 @@
+<!-- bill.ejs -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Checkout Bill</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            /* width: 300px; */
+            width: fit-content;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tfoot th {
+            text-align: right;
+        }
+
+        tfoot td {
+            font-weight: bold;
+        }
+
+        .total {
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/">Back to Products</a>
+    <h1>Checkout Bill</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price/unit</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% let total=0; %>
+                <% for (const item of items) { %>
+                    <tr>
+                        <td>
+                            <%= item.product.name %>
+                        </td>
+                        <td>
+                            <%= item.quantity %>
+                        </td>
+                        <td>$<%= item.product.price.toFixed(2) %>
+                        </td>
+                        <td>$<%= (item.quantity * item.product.price).toFixed(2) %>
+                        </td>
+                        <% total +=item.quantity * item.product.price; %>
+                    </tr>
+                    <% } %>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">Total</td>
+                <td class="total">$<%= total.toFixed(2) %>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+</html>
