@@ -12,6 +12,7 @@ const User = require("./models/user");
 const Cart = require("./models/cart");
 const { isLogged, storeReturnTo, login } = require("./middleware");
 const Product = require("./models/product");
+const OrderHistory = require("./models/order");
 
 const { PORT, DB_CONNECTION_STRING } = process.env;
 
@@ -157,9 +158,7 @@ app.get("/cart/:userId", async (req, res) => {
     .populate({
       path: "user",
     });
-  // console.log(cart);
   res.render("cart/index", { cart, user });
-  // res.render("cart/index", { currentUser: user });
 });
 
 // app.post("/cart/:userId/:id", async (req, res) => {
@@ -217,6 +216,32 @@ app.post("/cart/:userId/:id", async (req, res) => {
 //   const user = await User.findById(id);
 //   res.render("cart/index", { user });
 // });
+
+// app.get("/checkout/:userId", async (req, res) => {
+//   const { userId } = req.params;
+//   const user = await Cart.findById(userId);
+//   res.send(user);
+//   // res.render("checkout/index", { userId });
+// });
+
+app.get("/checkout/:userId", async (req, res) => {
+  const { userId } = req.params;
+  try {
+    const items = await Cart.find({ user: userId })
+      .populate("user")
+      .populate("product");
+    if (!items) {
+      return res.status(404).send("items not found");
+    }
+    // res.send(user);
+    // console.log(items);
+    res.render("checkout/index", { items });
+    await Cart.deleteMany({ user: userId });
+  } catch (error) {
+    console.error("Error while querying the database:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
 
 // app.get("/fakeUser", async (req, res) => {
 //   const user = new User({ email: "a@gmail.com", username: "a" });
