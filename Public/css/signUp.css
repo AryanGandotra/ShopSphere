@@ -1,0 +1,53 @@
+.card-body {
+    padding-left: 0rem;
+}
+
+.main-img {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 1000px) {
+    .main {
+        flex-direction: column;
+        gap: 10rem;
+    }
+
+    .main-img {
+        width: 100%;
+        height: 50%;
+        object-fit: contain
+    }
+
+    .form-container {
+        width: 100%;
+        height: 50%;
+        padding: 0 2rem;
+    }
+
+    .form-container h1 {
+        font-size: 2rem;
+    }
+}
+
+.signup a {
+    color: #FF7E56;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 450px) {
+    .main {
+        gap: 12rem;
+    }
+
+}
