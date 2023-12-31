@@ -11,7 +11,7 @@ a {
 
 body {
     font-family: 'Outfit', sans-serif;
-    color: #333;
+    color: #FF7E56;
 }
 
 ul {
@@ -32,7 +32,11 @@ nav {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 100%;
     z-index: 999;
-    height: 70px;
+    height: 7%;
+}
+
+nav a {
+    color: #FF7E56 !important;
 }
 
 nav ul {
@@ -42,7 +46,7 @@ nav ul {
 }
 
 ul li {
-    margin: 0 20px;
+    margin: 0 2rem;
 }
 
 .menu {
@@ -57,7 +61,6 @@ ul li {
 .dropdown-toggle {
     display: block;
     padding: 10px;
-    color: #333;
     text-decoration: none;
 }
 
@@ -95,12 +98,12 @@ ul li {
     align-items: center;
     justify-content: space-between;
     padding: 0.5rem 3rem;
-    background-color: #e0e0e0;
+    background-color: #FFF2EF;
     border-radius: 30px;
 }
 
 .search i {
-    color: #5b5b5b;
+    color: #FF7E56;
 }
 
 ul input {
@@ -110,6 +113,11 @@ ul input {
     outline: none;
     background: transparent;
     font-size: 1rem;
+    color: #FF7E56;
+}
+
+ul input::placeholder {
+    color: #FF7E56;
 }
 
 nav ul img {
@@ -139,8 +147,8 @@ nav ul img {
 
 
 footer {
-    background-color: #FBEFE4;
-    color: #013D28;
+    background-color: #FFF3F0;
+    color: #FF7E56;
     padding: 60px 0;
     bottom: 0;
 }
@@ -181,7 +189,7 @@ footer {
     margin-right: 10px;
     font-size: 20px;
     color: #fff;
-    background-color: #013D28;
+    background-color: #FF7E56;
     width: 40px;
     height: 40px;
     line-height: 40px;
@@ -196,11 +204,11 @@ footer {
 }
 
 .social-icon:hover {
-    background-color: #ff4081;
+    background-color: white;
 }
 
 .social-icon:hover i {
-    color: #fff;
+    color: #dc6c4a;
 }
 
 .footer-right {
@@ -228,15 +236,14 @@ footer {
 }
 
 .footer-right li a {
-    color: #013D28;
+    color: #FF7E56;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 
 .footer-right li a:hover {
-    color: #ff4081;
-    text-decoration: underline;
+    color: #dc6c4a;
 }
 
 
