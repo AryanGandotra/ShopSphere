@@ -1,7 +1,7 @@
 .top {
     width: 90%;
     height: 400px;
-    background-color: #FBEFE4;
+    background-color: #FFF3F0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -19,7 +19,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    gap: 30px;
+    gap: 2rem;
+    color: #FF7E56;
+
 }
 
 .top-left h1 {
@@ -37,11 +39,11 @@
     height: 50px;
     border: none;
     outline: none;
-    background-color: #013D28;
+    background-color: #FF7E56;
     color: #fff;
     font-size: 1rem;
     font-weight: 300;
-    border-radius: 30px;
+    border-radius: 0.25rem;
     cursor: pointer;
 }
 
@@ -83,7 +85,7 @@
     min-width: 250px;
     width: 20%;
     height: 40%;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 10px rgba(106, 106, 106, 0.2);
     border-radius: 10px;
 }
 
@@ -96,7 +98,7 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-
+    background-color: #FAFAFF;
 }
 
 .product-img {
@@ -105,7 +107,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #F7F7F7;
+    background-color: white;
     border-radius: 10px;
 }
 
@@ -115,9 +117,12 @@
     mix-blend-mode: multiply;
 }
 
+
+
+
 .product:hover .product-img img {
     transform: scale(1.1);
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 
 .product-details {
@@ -127,14 +132,14 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0.5rem;
+    padding: 1rem 2rem;
 }
 
 .product-name-price {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
     justify-content: space-between;
     align-items: center;
     font-weight: 700;
@@ -172,19 +177,21 @@
     width: 80%;
     background-color: white;
     padding: 0.5rem;
-    color: #013D28;
+    color: white;
     font-size: 0.8rem;
     font-weight: 300;
-    border-radius: 30px;
+    border-radius: 0.25rem;
     outline: none;
-    border: 1px solid #013D28;
+    background-color: #FF7E56;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    border: none;
 }
 
 .add-to-cart:hover {
-    background-color: #013D28;
-    color: #fff;
+    background-color: white;
+    color: #FF7E56;
+    border: 1px solid #FF7E56;
 }
 
 .view-product {
