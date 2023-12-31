@@ -26,7 +26,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     font-size: 1rem;
-    padding: 10px 40px;
+    padding: 0 2rem;
     background-color: #fff;
     position: fixed;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -91,7 +91,10 @@ ul li {
 }
 
 .search {
-    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 3rem;
     background-color: #e0e0e0;
     border-radius: 30px;
 }
@@ -101,13 +104,12 @@ ul li {
 }
 
 ul input {
-    width: 400px;
+    width: 80%;
     height: 30px;
     border: none;
     outline: none;
     background: transparent;
     font-size: 1rem;
-    /* padding: 5px; */
 }
 
 nav ul img {
@@ -235,4 +237,64 @@ footer {
 .footer-right li a:hover {
     color: #ff4081;
     text-decoration: underline;
+}
+
+
+@media screen and (max-width: 350px) {
+
+    nav {
+        padding: 0px;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .search {
+        display: none;
+    }
+
+    .user {
+        display: none;
+    }
+
+}
+
+
+@media only screen and (min-width: 350px) and (max-width: 500px) {
+    nav {
+        padding: 0px;
+    }
+
+    .user {
+        display: none;
+    }
+}
+
+/* @media only screen and (min-width: 1000px) and (max-width: 1300px) {
+    .menu{
+        font-size: 0.8rem;
+    }
+} */
+
+@media screen and (max-width: 1000px) {
+    .menu {
+        display: none;
+    }
+
+    .search {
+        height: 2rem;
+    }
+
+    .search input {
+        font-size: 0.8rem;
+    }
+}
+
+
+@media screen and (max-width: 1000px) {
+    .search {
+        display: none;
+    }
+
 }
