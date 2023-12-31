@@ -1,6 +1,7 @@
 <nav>
-    <ul>
+    <ul class="logo">
         <img src="https://penji.co/wp-content/uploads/2019/08/ecommerce_logo_magento.jpg" alt="" />
+        <!-- <a href="/">ShopSphere</a> -->
     </ul>
     <ul class="menu">
         <li class="dropdown">
@@ -12,8 +13,8 @@
                 <li><a href="#">Women's Clothing</a></li>
             </ul>
         </li>
-        <li><a href="#">Deals</a></li>
         <% if(currentUser && currentUser.username=="Admin" ){ %>
+            <li><a href="/orderHistory/<%= currentUser._id%>">Order History</a></li>
             <li><a href="/products/new">Add Product</a></li>
             <% } %>
                 <li><a href="/">All Products</a></li>
