@@ -21,7 +21,6 @@
     <%- include('./partials/nav') %>
 
 
-        <top>
             <div class="top">
                 <div class="top-left">
                     <h1>Summer Sale</h1>
@@ -32,7 +31,6 @@
                     <img src="/images/banner-img.png" alt="" />
                 </div>
             </div>
-        </top>
 
         <div class="products">
             <% products.forEach(function(product) { %>
@@ -45,27 +43,30 @@
                         <div class="product-details">
                             <div class="product-name-price">
                                 <div class="product-name">
-                                    <% var truncatedName=product.name.substring(0, 20);
+                                    <!-- <% var truncatedName=product.name.substring(0, 20);
                                         truncatedName=truncatedName+"..."; %>
-                                        <%= truncatedName %>
+                                        <%= truncatedName %> -->
+                                    <%=product.name %>
                                 </div>
 
 
-                                <div class=" product-price">
-                                    $<%= product.price %>
+                                <div class="product-price-container">
+                                    <div class=" product-price">
+                                        $<%= product.price %>
+                                    </div>
+
+                                        <button class="add-to-cart">Add to cart</button>
+
                                 </div>
                             </div>
 
-                            <div class="product-desc">
+                            <!-- <div class="product-desc">
                                 <% var truncatedDesc=product.description.substring(0, 100);
                                     truncatedDesc=truncatedDesc+"..."; %>
                                     <%= truncatedDesc %>
-                            </div>
+                            </div> -->
 
-                            <!-- <span class="buttons">
-                                <button class="add-to-cart">Add to cart</button>
 
-                            </span> -->
 
                         </div>
                     </div>
