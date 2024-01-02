@@ -12,7 +12,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 10px;
-    background-color: #eae9e9;
+    background-color: #FFF3F0;
     border-radius: 5px;
     margin-bottom: 10px;
 }
@@ -21,9 +21,9 @@
 .total a {
     font-size: 1rem;
     text-decoration: none;
-    background-color: #c2bcbc;
-    color: black;
-    padding: 10px 5px;
+    background-color: #FF7E56;
+    color: white;
+    padding: 0.75rem;
     border-radius: 5px;
 
 }
@@ -36,7 +36,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    background-color: #eae9e9;
+    background-color: #FFF3F0;
     border-radius: 5px;
 }
 
@@ -46,8 +46,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid rgb(158, 158, 158);
-    border-bottom: 1px solid rgb(158, 158, 158);
+    border-top: 1px solid #FF7E56;
+    border-bottom: 1px solid #FF7E56;
     padding: 15px 0px;
 }
 
@@ -64,7 +64,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgb(158, 158, 158);
+    border-bottom: 1px solid #FF7E56;
     padding: 15px 0px;
     gap: 10px;
 }
@@ -88,7 +88,6 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    /* border: 1px solid blue; */
 }
 
 .item-name {
@@ -101,10 +100,11 @@
 }
 
 .unit-left {
-    background-color: rgb(155, 220, 165);
-    color: green;
-    padding: 5px 10px;
+    background-color: #FF7E56;
+    color: white;
+    padding: 0.25rem;
     border-radius: 5px;
+    font-size: 0.8rem;
 }
 
 .cart-item-child-1 img {
