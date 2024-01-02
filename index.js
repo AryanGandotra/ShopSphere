@@ -224,19 +224,75 @@ app.post("/cart/:userId/:id", async (req, res) => {
 //   // res.render("checkout/index", { userId });
 // });
 
-app.get("/checkout/:userId", async (req, res) => {
+// Your route handler
+app.get("/orderHistory/:userId", async (req, res) => {
   const { userId } = req.params;
   try {
-    const items = await Cart.find({ user: userId })
-      .populate("user")
-      .populate("product");
-    if (!items) {
-      return res.status(404).send("items not found");
+    const user = await User.findById(userId).populate("populatedOrderHistory");
+    if (!user) {
+      return res.status(404).send("User not found");
     }
-    // res.send(user);
-    // console.log(items);
-    res.render("checkout/index", { items });
+
+    const orderHistory = user.populatedOrderHistory;
+
+    // Manually populate the carts field in each OrderHistory document
+    const populatedOrderHistoryWithCarts = await OrderHistory.populate(
+      orderHistory,
+      {
+        path: "populatedCarts",
+        populate: {
+          path: "product",
+          model: "Product",
+        },
+      }
+    );
+
+    console.log(populatedOrderHistoryWithCarts);
+
+    res.render("orderHistory/index", {
+      orderHistory: populatedOrderHistoryWithCarts,
+      user,
+    });
+  } catch (error) {
+    console.error("Error while querying the database:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.get("/checkout/:userId", async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+
+    // Fetch the cart items for the user
+    const cartItems = await Cart.find({ user: userId }).populate("product");
+
+    if (!cartItems || cartItems.length === 0) {
+      return res.status(404).send("Cart is empty");
+    }
+
+    // Create a new order history with the current cart items
+    const orderHistory = new OrderHistory({
+      carts: cartItems.map((cart) => cart._id),
+      user: userId,
+    });
+
+    // Save the new order history
+    await orderHistory.save();
+
+    // Update the user's order history with the new order
+    user.orderHistory.push(orderHistory._id);
+    await user.save();
+
+    // Delete cart items
     await Cart.deleteMany({ user: userId });
+
+    // Send response after saving order history
+    res.render("checkout/index", { items: cartItems });
   } catch (error) {
     console.error("Error while querying the database:", error);
     res.status(500).send("Internal Server Error");
