@@ -14,6 +14,19 @@ const UserSchema = new Schema({
       ref: "Product",
     },
   ],
+  orderHistory: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "OrderHistory",
+    },
+  ],
+});
+
+UserSchema.virtual("populatedOrderHistory", {
+  ref: "OrderHistory",
+  localField: "orderHistory",
+  foreignField: "_id",
+  justOne: false,
 });
 
 UserSchema.plugin(passportLocalMongoose);
