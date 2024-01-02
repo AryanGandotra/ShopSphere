@@ -1,0 +1,58 @@
+body>div {
+    font-family: Arial, sans-serif;
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    border: 1px solid #ccc;
+
+    color: #FF7E56;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+body>div>a {
+    align-self: flex-start;
+    font-size: 1rem;
+    text-decoration: none;
+    background-color: #FF7E56;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    border-radius: 0.5rem;
+}
+
+th,
+td {
+    border: 1px solid #FF7E56;
+    padding: 8px;
+}
+
+th {
+    background-color: #FFF3F0;
+}
+
+tfoot th {
+    text-align: right;
+}
+
+tfoot td {
+    font-weight: bold;
+}
+
+.total {
+    text-align: center;
+}
