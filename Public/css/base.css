@@ -12,7 +12,6 @@ a {
 
 body {
     font-family: 'Outfit', sans-serif;
-    color: #FF7E56;
 }
 
 ul {
@@ -40,6 +39,8 @@ nav ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 0.85rem;
+    font-weight : 300;
 }
 
 ul li {
@@ -90,32 +91,12 @@ ul li {
     background-color: #f4f4f4;
 }
 
-.search {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5rem 3rem;
-    background-color: #FFF2EF;
-    border-radius: 30px;
+.logo>p{
+    font-size: 1.5rem;
+    font-weight: 400;
+    color : #FF7E56;
 }
 
-.search i {
-    color: #FF7E56;
-}
-
-ul input {
-    width: 80%;
-    height: 30px;
-    border: none;
-    outline: none;
-    background: transparent;
-    font-size: 1rem;
-    color: #FF7E56;
-}
-
-ul input::placeholder {
-    color: #FF7E56;
-}
 
 nav ul img {
     height: 50px;
@@ -138,14 +119,15 @@ nav ul img {
     justify-content: space-between;
 }
 
-.cart i {
+.cart img{
+    height: 15px;
     margin-right: 10px;
 }
 
 
 footer {
-    background-color: #FFF3F0;
-    color: #FF7E56;
+    background-color: #F6F5F3;
+    color: #94877E;
     padding: 60px 0;
     bottom: 0;
 }
@@ -186,7 +168,7 @@ footer {
     margin-right: 10px;
     font-size: 20px;
     color: #fff;
-    background-color: #FF7E56;
+    background-color: #94877E;
     width: 40px;
     height: 40px;
     line-height: 40px;
@@ -201,11 +183,12 @@ footer {
 }
 
 .social-icon:hover {
-    background-color: white;
+    background-color: #F6F5F3;
+    border:1px solid #94877E;
 }
 
 .social-icon:hover i {
-    color: #dc6c4a;
+    color: #94877E;
 }
 
 .footer-right {
@@ -233,14 +216,14 @@ footer {
 }
 
 .footer-right li a {
-    color: #FF7E56;
+    color: #94877E;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 
 .footer-right li a:hover {
-    color: #dc6c4a;
+    color: #645b54;
 }
 
 
