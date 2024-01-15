@@ -1,31 +1,38 @@
-body>div {
+.main {
     font-family: Arial, sans-serif;
     width: 50%;
-    margin: 0 auto;
+    margin: 5rem auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 2rem;
     border: 1px solid #ccc;
-
-    color: #FF7E56;
+    font-weight: 300;
+    color: #2D2D2D;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-body>div>a {
+.main>a {
     align-self: flex-start;
     font-size: 1rem;
     text-decoration: none;
-    background-color: #FF7E56;
-    color: white;
     padding: 0.75rem;
     border-radius: 0.5rem;
+    color: #2D2D2D !important;
 }
 
-h1 {
+.main>a>i {
+    font-size: 1rem;
+    color: #2D2D2D !important;
+    margin-bottom: 1rem;
+}
+
+.invoice {
+    width: 100%;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
     text-align: center;
-    margin-bottom: 20px;
 }
 
 table {
@@ -37,12 +44,17 @@ table {
 
 th,
 td {
-    border: 1px solid #FF7E56;
+    border: 1px solid #D5D9D9;
     padding: 8px;
+    text-align: center;
+}
+
+.item-name {
+    text-align: left;
 }
 
 th {
-    background-color: #FFF3F0;
+    background-color: #D5D9D9;
 }
 
 tfoot th {
@@ -55,4 +67,29 @@ tfoot td {
 
 .total {
     text-align: center;
+}
+
+.download {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.download>button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+    background-color: #2D2D2D;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 300;
 }
