@@ -26,49 +26,54 @@
         </div>
 
         <div class="form-container">
-            <h1>
-                Welcome to ShopSphere
-            </h1>
-            <p>
-                Ship Smarter Today
+            <div class="back-heading">
+                <div>
+                    <a href="/">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+                </div>
+                <div class="name">
+                    ShopSphere
+                    <img src="images/logo.png" alt="logo" />
+                </div>
+            </div>
+            <p class="welcome">
+                Welcome Back!
             </p>
             <div class="card-body">
 
-                <form novalidate class="validated-form" action="/signUp" method="post">
+                <form novalidate class="validated-form" action="/signUp" method="post" novalidate>
                     <div class=" mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" required>
+                        <input type="text" class="form-control" id="username" name="username" required
+                            placeholder="Username">
                         <div class="invalid-feedback">
                             Please enter a valid email.
                         </div>
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                     <div class=" mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" name="email" required>
+                        <input type="email" class="form-control" id="exampleInputEmail1" name="email" required
+                            placeholder="name@email.com">
                         <div class="invalid-feedback">
                             Please enter a valid email.
                         </div>
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" required name="password">
+                        <input type="password" class="form-control" id="exampleInputPassword1" required name="password"
+                            placeholder="Password">
                         <div class="invalid-feedback">
                             Please enter a valid password.
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
+
                         <input type="password" class="form-control" id="exampleInputPassword2" required
-                            name="confirmPassword">
+                            name="confirmPassword" placeholder="Confirm Password">
                         <div class="invalid-feedback">
                             Please enter a valid password.
                         </div>
                     </div>
                     <button type="submit" class="submit-button">Sign Up</button>
                 </form>
-                <a href="/" class="back-button">Back</a>
                 <div class="signup">
                     <p>Don't have an account? <a href="/login">Login</a></p>
 
