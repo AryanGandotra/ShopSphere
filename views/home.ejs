@@ -21,46 +21,39 @@
     <%- include('./partials/nav') %>
 
 
-            <div class="top">
-                <div class="top-left">
-                    <h1>Summer Sale</h1>
-                    <h2>Grab Upto 50% Off On Selected Headphone</h2>
-                    <button>Shop Now</button>
-                </div>
-                <div class="top-right">
-                    <img src="/images/banner-img.png" alt="" />
-                </div>
-            </div>
+        <div class="top">
+            <img src="images/banner.png">
+        </div>
 
         <div class="products">
             <% products.forEach(function(product) { %>
-                <a href="/products/<%= product._id %>">
-                    <div class="product">
+
+                <div class="product">
+                    <a href="/products/<%= product._id %>">
                         <div class="product-img">
                             <img src="<%=product.imageUrl %>" />
                         </div>
+                    </a>
 
-                        <div class="product-details">
-                            <div class="product-name-price">
-                                <div class="product-name">
-                                    <!-- <% var truncatedName=product.name.substring(0, 20);
-                                        truncatedName=truncatedName+"..."; %>
-                                        <%= truncatedName %> -->
-                                    <%=product.name %>
-                                </div>
+                    <div class="product-details">
+                        <div class="product-name-price">
+                            <div class="product-name">
 
-
-                                <div class="product-price-container">
-                                    <div class=" product-price">
-                                        $<%= product.price %>
-                                    </div>
-
-                                        <button class="add-to-cart">Add to cart</button>
-
-                                </div>
+                                <%=product.name %>
                             </div>
 
-                            <!-- <div class="product-desc">
+
+                            <div class="product-price-container">
+                                <div class=" product-price">
+                                    $<%= product.price %>
+                                </div>
+
+                                <a href="#"><img src="/images/shopping-bag.png" alt="" /></a>
+
+                            </div>
+                        </div>
+
+                        <!-- <div class="product-desc">
                                 <% var truncatedDesc=product.description.substring(0, 100);
                                     truncatedDesc=truncatedDesc+"..."; %>
                                     <%= truncatedDesc %>
@@ -68,9 +61,9 @@
 
 
 
-                        </div>
                     </div>
-                </a>
+                </div>
+
                 <% }); %>
 
         </div>
