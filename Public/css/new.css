@@ -1,17 +1,11 @@
-.back-button{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: white;
-    color: #013D28;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-}
-
 .heading {
+    width: 100%;
     text-align: center;
-    margin-top: 50px;
+    font-size: 3rem;
+    font-weight: 400;
+    margin: 0 auto;
+    margin-top: 80px;
+    color: #756b64;
 }
 
 .form-container {
@@ -19,20 +13,31 @@
     margin: 50px auto;
 }
 
+form>div>input{
+    width: 100%;
+    padding: 1.5rem 1rem;
+}
+
+form>div>input::placeholder {
+    font-size: 0.8rem;
+    font-weight: 200;
+    color: #727886;
+}
+
 .submit-button {
+    margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 20px;
     background-color: white;
-    color: #013D28;
-    border: 2px solid #013D28;
-    padding: 10px 20px;
-    border-radius: 5px;
+    color: #94877F;
+    border: 1px solid #94877F;
+    padding: 0.75rem 1.5rem;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
 
 
 .submit-button:hover {
-    background-color: #013D28;
+    background-color: #94877F;
     color: white;
 }
