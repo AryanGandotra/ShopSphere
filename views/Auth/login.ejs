@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap"
@@ -23,37 +25,50 @@
 
     <div class="main">
         <div class="main-login-img">
-            <img src="images/login.jpeg" alt="login" />
+            <img src="images/login.jpg" alt="login" />
         </div>
         <div class="form-container">
-            <h1>
-                Welcome to ShopSphere
-            </h1>
-            <p>
-                Ship Smarter Today
+            <div class="back-heading">
+                <div>
+                    <a href="/">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+                </div>
+                <div class="name">
+                    ShopSphere
+                    <img src="images/logo.png" alt="logo" />
+                </div>
+            </div>
+            <p class="welcome">
+                Welcome Back!
             </p>
             <div class="card-body">
 
-                <form action="/login" method="post">
+                <form action="/login" method="post" novalidate class="validated-form">
                     <div class=" mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" required>
+                        <input type="text" class="form-control" id="username" name="username"
+                            placeholder="name@email.com" required>
+                        <div class="valid-feedback">
+                            Looks Good!
+                        </div>
                         <div class="invalid-feedback">
                             Please enter a valid email.
                         </div>
-                        <div id="emailHelp" class="form-text">We'll never share your email/username with anyone else.
-                        </div>
+
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" required name="password">
+                        <input type="password" class="form-control" id="exampleInputPassword1" required name="password"
+                            placeholder="Password">
+                        <div class="valid-feedback">
+                            Looks Good!
+                        </div>
                         <div class="invalid-feedback">
                             Please enter a valid password.
                         </div>
                     </div>
                     <button type="submit" class="submit-button">Login</button>
                 </form>
-                <a href="/" class="back-button">Back</a>
+
                 <div class="signup">
                     <p>Don't have an account? <a href="/signup">Sign up</a></p>
 
