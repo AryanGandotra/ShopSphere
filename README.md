@@ -80,6 +80,11 @@ npm start
 │       ├── formValidation.js
 │       └── orderHistory.png
 ├── README.md
+├── Demo
+│   ├── cart.js
+│   ├── order.js
+│   ├── store.js
+│   └── user.js
 ├── routes
 │   ├── 
 │   ├── 
