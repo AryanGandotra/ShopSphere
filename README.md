@@ -97,28 +97,26 @@ npm start
 ## Demo
 
 ### Home Page
-![Home Page]("https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Home Page-1.png")
+![Home Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Home%20Page-1.png)
 
-![Home Page]("https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Home Page-2.png")
+![Home Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Home%20Page-2.png)
 
-![Home Page]("https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Home Page-3.png")
+![Home Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Home%20Page-3.png)
 
 ### Product Page
-![Product Page]("https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Product Page (Admin Panel).png")
+![Product Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Product%20Page%20(Admin%20Panel).png)
 
 ### Cart Page
-![Cart Page]("https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Cart.png")
+![Cart Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Cart.png)
 
 ### Login Page
-![User Page]("https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Login Page.png")
+![User Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Login%20Page.png)
 
 ### Sign Up Page
-![User Page]("https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/SignUp Page.png")
+![User Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/SignUp%20Page.png)
 
 ### My Orders Page
-![User Page]("https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Order History.png")
+![User Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Order%20History.png)
 
 ### Invoice
-![User Page]("https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Invoice.png")
-
-
+![User Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Invoice.png)
