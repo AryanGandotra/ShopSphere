@@ -1,8 +1,5 @@
 <nav>
-    <ul class="logo">
-        <img src="https://penji.co/wp-content/uploads/2019/08/ecommerce_logo_magento.jpg" alt="" />
-        <!-- <a href="/">ShopSphere</a> -->
-    </ul>
+
     <ul class="menu">
         <li class="dropdown">
             <a href="#" class="dropdown-toggle">Categories</a>
@@ -13,29 +10,29 @@
                 <li><a href="#">Women's Clothing</a></li>
             </ul>
         </li>
-        <% if(currentUser && currentUser.username=="Admin" ){ %>
-            <li><a href="/orderHistory/<%= currentUser._id%>">Order History</a></li>
-            <li><a href="/products/new">Add Product</a></li>
+        <% if(currentUser ){ %>
+            <li><a href="/orderHistory/<%= currentUser._id%>">My Orders</a></li>
             <% } %>
-                <li><a href="/">All Products</a></li>
+                <% if(currentUser && currentUser.username=="Admin" ){ %>
+                    <li><a href="/products/new">Add Product</a></li>
+                    <% } %>
+                        <li><a href="/">All Products</a></li>
+    </ul>
+    <ul class="logo">
+        <p>ShopSphere</p>
+        <img src="/images/logo.png" alt="logo" >
     </ul>
 
     <ul>
-        <li class="search">
-            <input type="text" placeholder="Search Products" />
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </li>
-    </ul>
-    <ul>
         <% if(!currentUser){ %>
-            <li class="user"><i class="fa-solid fa-user"></i><a href="/login">Login</a></li>
-            <li class="user"><i class="fa-solid fa-user"></i><a href="/signUp">SignUp</a></li>
+            <li class="user"><i class="fa-regular fa-user"></i><a href="/login">Login</a></li>
+            <li class="user"><i class="fa-regular fa-user"></i><a href="/signUp">SignUp</a></li>
             <% } else{ %>
                 <a class="nav-link" href="#">
                     <%= currentUser.username %>
                 </a>
                 <li class="user"><a href="/logout">Logout</a></li>
-                <li class="cart"><i class="fa-solid fa-cart-shopping"></i><a href="/cart/<%=currentUser._id %>">Cart</a>
+                <li class="cart"><a href="/cart/<%=currentUser._id %>"><img src="/images/shopping-bag.png"></a>
                 </li>
 
 
