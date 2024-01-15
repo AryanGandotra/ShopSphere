@@ -97,18 +97,28 @@ npm start
 ## Demo
 
 ### Home Page
-![Home Page]()
+![Home Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Home Page-1.png)
 
-### Store Page
-![Store Page]()
+![Home Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Home Page-2.png)
+
+![Home Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Home Page-3.png)
 
 ### Product Page
-![Product Page]()
+![Product Page](![Home Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Product Page (Admin Panel).png))
 
 ### Cart Page
-![Cart Page]()
+![Cart Page](![Home Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Cart.png))
 
-### User Page
-![User Page]()
+### Login Page
+![User Page](![Home Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Login Page.png))
+
+### Sign Up Page
+![User Page](![Home Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/SignUp Page.png))
+
+### My Orders Page
+![User Page](![Home Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Order History.png))
+
+### Invoice
+![User Page](![Home Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Invoice.png))
 
 
