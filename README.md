@@ -14,7 +14,7 @@ ShopSphere is a web application that allows users to create and manage their own
 
 1. Clone the repository
 ```
-git clone 
+git clone https://github.com/AryanGandotra/ShopSphere.git
 ```
 
 2. Install dependencies
@@ -120,3 +120,10 @@ npm start
 
 ### Invoice
 ![User Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Invoice.png)
+
+
+## Contribution
+
+1. Contributions are welcome! Please feel free to submit a Pull Request.
+2. Please create an issue for any new feature requests/bugs.
+3. Pull requests will be merged after being reviewed.
