@@ -224,35 +224,26 @@ app.post("/cart/:userId/:id", async (req, res) => {
 //   // res.render("checkout/index", { userId });
 // });
 
-// Your route handler
 app.get("/orderHistory/:userId", async (req, res) => {
   const { userId } = req.params;
+
   try {
-    const user = await User.findById(userId).populate("populatedOrderHistory");
+    const user = await User.findById(userId);
     if (!user) {
       return res.status(404).send("User not found");
     }
 
-    const orderHistory = user.populatedOrderHistory;
-
-    // Manually populate the carts field in each OrderHistory document
-    const populatedOrderHistoryWithCarts = await OrderHistory.populate(
-      orderHistory,
-      {
-        path: "populatedCarts",
-        populate: {
-          path: "product",
-          model: "Product",
-        },
-      }
-    );
-
-    console.log(populatedOrderHistoryWithCarts);
-
-    res.render("orderHistory/index", {
-      orderHistory: populatedOrderHistoryWithCarts,
-      user,
+    // Fetch the order history for the user
+    const orderHistory = await OrderHistory.find({ user: userId }).populate({
+      path: "products",
     });
+
+    // if (!orderHistory || orderHistory.length === 0) {
+    //   return res.status(404).send("Order history is empty");
+    // }
+
+    // Send response after fetching order history
+    res.render("orderHistory/index", { orderHistory,user });
   } catch (error) {
     console.error("Error while querying the database:", error);
     res.status(500).send("Internal Server Error");
@@ -277,7 +268,8 @@ app.get("/checkout/:userId", async (req, res) => {
 
     // Create a new order history with the current cart items
     const orderHistory = new OrderHistory({
-      carts: cartItems.map((cart) => cart._id),
+      products: cartItems.map((cartItem) => cartItem.product),
+      productQuantity: cartItems.map((cartItem) => cartItem.quantity),
       user: userId,
     });
 
