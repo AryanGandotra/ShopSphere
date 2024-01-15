@@ -33,19 +33,25 @@
                     <a href="/"><i class="fa-solid fa-chevron-left"></i> &nbsp;Back</a>
                 </div>
                 <div class="right-title">
-                    <h1>
-                        <%= product.name %>
-                    </h1>
+                    <%= product.name %>
                 </div>
-                <hr>
-                <div class="right-description">
+                <div class="right-price">
                     <p>
+                        $ <%= product.price %> or <%= Math.round(((product.price)/6)*100)/ 100 %> /month
+                    </p>
+                </div>
+                <div class="right-description">
+                    <p class="desc">
                         <%= product.description %>
                     </p>
-                    <br>
-                    <p>
-                        Category: <%= product.category %>
-                    </p>
+                    <div class="category-container">
+                        <p class="category-heading">
+                            Category
+                        </p>
+                        <p class="category">
+                            <%= product.category %>
+                        </p>
+                    </div>
                 </div>
                 <div class="rating">
                     <fieldset class="starability-coinFlip">
@@ -63,18 +69,10 @@
 
                     <div class="no-rating">(121)</div>
                 </div>
-                <hr>
-                <div class="right-price">
-                    <h2>
-                        $ <%= product.price %> or <%= Math.round(((product.price)/6)*100)/ 100 %> /month
-                    </h2>
-                </div>
-                <hr>
-
                 <div class="product-count">
                     <div class="product-count-title">
-                        <h3>Available Quantity: <%=product.quantity %>
-                        </h3>
+                        <p>Available Quantity: <%=product.quantity %>
+                        </p>
                         <br>
                         <p>
                             <% if(no_of_people>0){%>
@@ -92,7 +90,8 @@
 
 
                 <div class="buy-cart">
-                    <button class="buy-product" id="buy-product">Buy Now</button>
+                    <button class="fav-product" id="fav-product"> <i class="fa-regular fa-heart"></i>Add to
+                        Favorites</button>
 
                     <% if(currentUser){%>
 
@@ -107,6 +106,7 @@
                             <button type="submit" class="add-to-cart-btn">Add to Cart</button>
                         </form>
                         <%} %>
+
 
 
                             <% if(currentUser && currentUser.username=="Admin" ){ %>
@@ -132,6 +132,8 @@
         </div>
 
         <%- include('../partials/footer') %>
+
+
 
 </body>
 
