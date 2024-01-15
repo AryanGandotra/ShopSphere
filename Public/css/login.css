@@ -17,9 +17,31 @@
 .main-login-img img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    
+    object-fit: fill;
+
 }
+
+.back-heading {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.25rem;
+    color: #222529;
+
+}
+
+.back-heading>div>a {
+    text-decoration: none;
+    font-weight: 100;
+}
+
+.back-heading>div>a>i {
+    font-size: 1.25rem;
+    color: #222529;
+}
+
 
 
 .form-container {
@@ -29,12 +51,29 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 2rem;
 }
 
-.form-container h1 {
-    font-size: 3rem;
-    color: #FF7E56;
+.name {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 2.25rem;
+    color: #222529;
+}
+
+.name>img {
+    width: 3.5rem;
+    height: 3.5rem;
+    object-fit: cover;
+}
+
+.welcome {
+    font-size: 1.25rem;
+    font-weight: 300;
 }
 
 .card-body {
@@ -43,20 +82,35 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
     padding-left: 0;
 }
 
 
 .card-body form {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+
+.card-body form>div>input {
+    width: 100%;
+    padding: 0.55rem 1rem;
+}
+
+.card-body form>div>input::placeholder {
+    font-size: 0.8rem;
+    font-weight: 200;
+    color: #727886;
 }
 
 
 .submit-button {
     width: 100%;
     margin: 0.25rem auto;
-    background-color: #FF7E56;
+    background-color: #222529;
     color: white;
     padding: 1rem 2rem;
     border: none;
@@ -68,8 +122,8 @@
 
 .submit-button:hover {
     background-color: white;
-    border: 1px solid #FF7E56;
-    color: #FF7E56;
+    border: 1px solid #222529;
+    color: #222529;
 }
 
 .back-button {
@@ -93,6 +147,10 @@
 
 .back-button:hover a {
     color: #FF7E56;
+}
+
+.signup {
+    align-self: flex-start;
 }
 
 
