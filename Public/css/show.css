@@ -1,11 +1,12 @@
 .product {
     width: 90%;
-    height: 110vh;
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
     gap: 3rem;
+    color: #2D2D2D !important;
 }
 
 .left {
@@ -14,7 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #F5F6F6;
+    background-color: #F2F0F1;
     border-radius: 10px;
 }
 
@@ -49,6 +50,8 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    font-weight: 400;
+    font-size: 1.5rem;
     color: #000000;
 }
 
@@ -56,11 +59,38 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: flex-start;
-    color: #868686;
-    padding: 1rem 0;
+    color: #A0A0A0;
+    font-weight: 300;
     margin-top: 1.5rem;
+    text-align: justify;
+}
+
+.category-container {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.desc {
+    line-height: 1.5;
+}
+
+.category-heading {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #000000;
+    margin-top: 1.5rem;
+}
+
+.category {
+    width: fit-content;
+    color: #94877F;
+    border: 1px solid #94877F;
+    padding: 0.5rem 1rem;
+
 }
 
 .rating {
@@ -85,6 +115,8 @@
     align-items: center;
     color: #000000;
     margin-top: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 400;
 }
 
 .right-category {
@@ -93,7 +125,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    color: #868686;
+    color: #94877F;
     margin-top: 1.5rem;
 }
 
@@ -109,6 +141,7 @@
 
 .product-count-title {
     margin-right: 10px;
+    font: 400 1.5rem;
 }
 
 .product-count-title h3 {
@@ -177,18 +210,18 @@
 
 } */
 
-.buy-product {
+.fav-product {
     width: 20%;
     min-height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 1.5rem;
-    background-color: #FF7E56;
+    background-color: #94877F;
     color: white;
+    gap: 0.5rem;
     outline: none;
     border: none;
-    border-radius: 40px;
     cursor: pointer;
 }
 
@@ -200,10 +233,9 @@
     align-items: center;
     margin-top: 1.5rem;
     background-color: white;
-    color: #FF7E56;
+    color: #94877F;
     outline: none;
-    border: 1px solid #FF7E56;
-    border-radius: 40px;
+    border: 1px solid #94877F;
     cursor: pointer;
     padding-left: 5px;
 }
@@ -215,7 +247,7 @@
     border: none;
     outline: none;
     cursor: pointer;
-    color: #FF7E56;
+    color: #94877F;
 }
 
 .add-to-cart-btn {
@@ -225,7 +257,7 @@
     border: none;
     outline: none;
     cursor: pointer;
-    color: #FF7E56;
+    color: #94877F;
 }
 
 
@@ -237,7 +269,7 @@
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
-    color: #FF7E56;
+    color: #94877F;
 }
 
 .delete {
@@ -248,7 +280,7 @@
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
-    color: #FF7E56;
+    color: #94877F;
     background-color: transparent;
     border: none;
     outline: none;
