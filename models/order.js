@@ -3,11 +3,17 @@ const Schema = mongoose.Schema;
 
 const orderHistorySchema = new Schema(
   {
-    carts: [
+    products: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Cart",
-        required: [true, "Cart is required"],
+        ref: "Product",
+        required: [true, "Product is required"],
+      },
+    ],
+    productQuantity: [
+      {
+        type: Number,
+        required: [true, "Product quantity is required"],
       },
     ],
     user: {
@@ -18,13 +24,6 @@ const orderHistorySchema = new Schema(
   },
   { timestamps: true }
 );
-
-orderHistorySchema.virtual("populatedCarts", {
-  ref: "Cart",
-  localField: "carts",
-  foreignField: "_id",
-  justOne: false,
-});
 
 const OrderHistory = mongoose.model("OrderHistory", orderHistorySchema);
 
