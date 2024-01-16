@@ -210,13 +210,21 @@
 
 } */
 
-.fav-product {
+.fav-form {
     width: 20%;
     min-height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 1.5rem;
+}
+
+.fav-product {
+    width: 100%;
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #94877F;
     color: white;
     gap: 0.5rem;
