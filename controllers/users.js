@@ -1,8 +1,12 @@
 const User = require("../models/user");
 
+// Async Function for registering a new user
+
 module.exports.register = async (req, res, next) => {
   try {
+    // Destructuring the email, password and confirmPassword from the request body
     const { email, password, confirmPassword } = req.body;
+    // Checking if the password and confirmPassword are the same. If they are same then the user is registered and logged in, else redirected to the sign up page
     if (password !== confirmPassword) {
       return res.redirect("/signUp");
     }

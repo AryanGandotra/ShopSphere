@@ -1,3 +1,5 @@
+// Importing all the required modules and packages
+
 const express = require("express");
 const path = require("path");
 const app = express();
@@ -60,10 +62,14 @@ app.use((req, res, next) => {
   next();
 });
 
+// Route for home page
+
 app.get("/", async (req, res) => {
   const products = await Products.find({});
   res.render("home", { products });
 });
+
+// Routes for all pages using the routes folder
 
 app.use("/products", productRoutes);
 app.use("/login", loginRoutes);
@@ -74,6 +80,7 @@ app.use("/fav", favRoutes);
 app.use("/orderHistory", orderHistoryRoutes);
 app.use("/checkout", checkoutRoutes);
 
+// Initiating the server
 
 app.listen(PORT, () => {
   console.log(`Server running on Port ${PORT}`);

@@ -258,12 +258,6 @@ footer {
     }
 }
 
-/* @media only screen and (min-width: 1000px) and (max-width: 1300px) {
-    .menu{
-        font-size: 0.8rem;
-    }
-} */
-
 @media screen and (max-width: 1000px) {
     .menu {
         display: none;
