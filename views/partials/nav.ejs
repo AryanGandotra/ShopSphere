@@ -20,7 +20,7 @@
     </ul>
     <ul class="logo">
         <p>ShopSphere</p>
-        <img src="/images/logo.png" alt="logo" >
+        <img src="/images/logo.png" alt="logo">
     </ul>
 
     <ul>
@@ -32,6 +32,7 @@
                     <%= currentUser.username %>
                 </a>
                 <li class="user"><a href="/logout">Logout</a></li>
+                <li><a href="/fav/<%=currentUser._id %>"><i class="fa-regular fa-heart"></i></a></li>
                 <li class="cart"><a href="/cart/<%=currentUser._id %>"><img src="/images/shopping-bag.png"></a>
                 </li>
 
