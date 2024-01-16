@@ -29,31 +29,60 @@
             <% products.forEach(function(product) { %>
 
                 <div class="product">
-                    <a href="/products/<%= product._id %>">
-                        <div class="product-img">
-                            <img src="<%=product.imageUrl %>" />
-                        </div>
-                    </a>
+                    <%if(currentUser){ %>
+                        <% if(!currentUser.favorites.includes(product._id)){%>
+                            <a href="" class="fav">
+                                <i class="fa-regular fa-heart"></i>
+                            </a>
+                            <%}else{%>
+                                <a href="" class="fav">
+                                    <i class="fa-solid fa-heart fav-red"></i>
+                                </a>
+                                <%} %>
+                                    <% } %>
+                                        <a href="/products/<%= product._id %>">
+                                            <div class="product-img">
+                                                <img src="<%=product.imageUrl %>" />
+                                            </div>
+                                        </a>
 
-                    <div class="product-details">
-                        <div class="product-name-price">
-                            <div class="product-name">
+                                        <div class="product-details">
+                                            <div class="product-name-price">
+                                                <div class="product-name">
 
-                                <%=product.name %>
-                            </div>
+                                                    <%=product.name %>
+                                                </div>
 
 
-                            <div class="product-price-container">
-                                <div class=" product-price">
-                                    $<%= product.price %>
-                                </div>
+                                                <div class="product-price-container">
+                                                    <div class=" product-price">
+                                                        $<%= product.price %>
+                                                    </div>
 
-                                <a href="#"><img src="/images/shopping-bag.png" alt="" /></a>
 
-                            </div>
-                        </div>
 
-                        <!-- <div class="product-desc">
+
+                                                    <% if(currentUser){%>
+
+                                                        <form action="/cart/<%= currentUser._id %>/<%= product._id%>"
+                                                            method="post" class="add-to-cart">
+                                                            <select name="quantity" id="quantity">
+                                                                <% for(var i=1;i<=product.quantity/2;i++){ %>
+                                                                    <option value="<%=i%>">
+                                                                        <%=i%>
+                                                                    </option>
+                                                                    <% } %>
+                                                            </select>
+                                                            <button class="cart-btn" type="submit"
+                                                                class="add-to-cart-btn"><img
+                                                                    src="/images/shopping-bag.png" alt="" /></button>
+                                                        </form>
+                                                        <%} %>
+
+                                                </div>
+                                            </div>
+
+                                            <!-- <div class="product-desc">
                                 <% var truncatedDesc=product.description.substring(0, 100);
                                     truncatedDesc=truncatedDesc+"..."; %>
                                     <%= truncatedDesc %>
@@ -61,7 +90,7 @@
 
 
 
-                    </div>
+                                        </div>
                 </div>
 
                 <% }); %>
