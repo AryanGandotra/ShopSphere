@@ -45,10 +45,17 @@ npm start
 ```
 .
 ├── index.js
-├── config
-│   ├── auth.js
-│   ├── database.js
-│   └── passport.js
+├── Views
+│   ├── Auth
+│   ├── cart
+│   ├── checkout
+│   ├── fav
+│   ├── orderHistory
+│   ├── partials
+│   ├── products
+│   └── home.ejs
+├── Utils
+│   └── catchAsync.js
 ├── controllers
 │   └── users.js
 ├── models
@@ -78,7 +85,8 @@ npm start
 │   │   └── signup.png
 │   └── js
 │       ├── formValidation.js
-│       └── orderHistory.png
+│       └── orderHistory.js
+├── middleware.js
 ├── README.md
 ├── Demo
 │   ├── cart.js
@@ -86,11 +94,14 @@ npm start
 │   ├── store.js
 │   └── user.js
 ├── routes
-│   ├── 
-│   ├── 
-│   ├── 
-│   ├── 
-│   └── 
+│   ├── cart.js
+│   ├── checkout.js
+│   ├── fav.js
+│   ├── login.js
+│   ├── logout.js
+│   ├── orderHistory.js
+│   ├── products.js
+│   └── products.js
 
 ```
 
