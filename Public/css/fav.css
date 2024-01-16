@@ -1,0 +1,105 @@
+.main{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 6rem;
+    display: flex;
+}
+
+.fav-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.fav-item{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 2rem 1rem ;
+    background-color:#EFF2F2;
+    border-radius: 0.5rem;
+}
+
+.fav-img{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fav-img>img{
+    width: 70%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+}
+
+.fav-details{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+
+.fav-name{
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+.fav-price{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.fav-btns{
+    width: 10%;
+    height: 10%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.fav-btns>a{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #bbbdbd;
+    color: #2d2d2d;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 300;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+}
+
+.fav-btns>form>button{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2d2d2d;
+    background-color: transparent;
+    font-size: 1.5rem;
+    font-weight: 100;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+}
