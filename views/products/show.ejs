@@ -90,39 +90,61 @@
 
 
                 <div class="buy-cart">
-                    <button class="fav-product" id="fav-product"> <i class="fa-regular fa-heart"></i>Add to
-                        Favorites</button>
 
-                    <% if(currentUser){%>
-
-                        <form action="/cart/<%= currentUser._id %>/<%= product._id%>" method="post" class="add-to-cart">
-                            <select name="quantity" id="quantity">
-                                <% for(var i=1;i<=product.quantity/2;i++){ %>
-                                    <option value="<%=i%>">
-                                        <%=i%>
-                                    </option>
-                                    <% } %>
-                            </select>
-                            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
-                        </form>
-                        <%} %>
 
 
 
-                            <% if(currentUser && currentUser.username=="Admin" ){ %>
+                    <% if(currentUser){%>
+                        <% if(!currentUser.favorites.includes(product._id)){%>
+                            <form class="fav-form" action="/fav/<%= currentUser._id %>/<%= product._id%>" method="post">
+                                <button class="fav-product" class="fav-product">
 
-                                <a href="/products/<%= product._id%>/edit">
-                                    <div class="edit">
-                                        <i class="fa-solid fa-pen-to-square "></i>
-                                    </div>
-                                </a>
+                                    <i class="fa-regular fa-heart"></i>Add to
+                                    Favorites
 
-                                <form method="post" action="/products/<%= product._id%>?_method=DELETE">
-                                    <button class="delete">
-                                        <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
+                            <%}else{%>
+                                <form class="fav-form" action="/fav/<%= currentUser._id %>/<%=product._id%>?_method=DELETE" method="POST">
+                                    <button class="fav-product" class="fav-product">
+
+                                        <i class="fa-solid fa-heart"></i>
+                                        Remove Favorite
+
                                     </button>
                                 </form>
                                 <% } %>
+
+
+                                    <form action="/cart/<%= currentUser._id %>/<%= product._id%>" method="post"
+                                        class="add-to-cart">
+                                        <select name="quantity" id="quantity">
+                                            <% for(var i=1;i<=product.quantity/2;i++){ %>
+                                                <option value="<%=i%>">
+                                                    <%=i%>
+                                                </option>
+                                                <% } %>
+                                        </select>
+                                        <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+                                    </form>
+                                    <%} %>
+
+
+
+                                        <% if(currentUser && currentUser.username=="Admin" ){ %>
+
+                                            <a href="/products/<%= product._id%>/edit">
+                                                <div class="edit">
+                                                    <i class="fa-solid fa-pen-to-square "></i>
+                                                </div>
+                                            </a>
+
+                                            <form method="post" action="/products/<%= product._id%>?_method=DELETE">
+                                                <button class="delete">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </button>
+                                            </form>
+                                            <% } %>
 
                 </div>
 
