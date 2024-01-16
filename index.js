@@ -9,10 +9,18 @@ const passport = require("passport");
 const session = require("express-session");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user");
-const Cart = require("./models/cart");
-const { isLogged, storeReturnTo, login } = require("./middleware");
-const Product = require("./models/product");
-const OrderHistory = require("./models/order");
+// const Cart = require("./models/cart");
+// const { isLogged, storeReturnTo, login } = require("./middleware");
+// const Product = require("./models/product");
+// const OrderHistory = require("./models/order");
+const productRoutes = require("./routes/products");
+const loginRoutes = require("./routes/login");
+const signUpRoutes = require("./routes/signup");
+const logoutRoutes = require("./routes/logout");
+const cartRoutes = require("./routes/cart");
+const favRoutes = require("./routes/fav");
+const orderHistoryRoutes = require("./routes/orderHistory");
+const checkoutRoutes = require("./routes/checkout");
 
 const { PORT, DB_CONNECTION_STRING } = process.env;
 
@@ -61,240 +69,244 @@ app.get("/", async (req, res) => {
   res.render("home", { products });
 });
 
-app.get("/products", isLogged, async (req, res) => {
-  const products = await Products.find({});
-  res.render("products/index", { products });
-});
+app.use("/products", productRoutes);
+app.use("/login", loginRoutes);
+app.use("/signUp", signUpRoutes);
+app.use("/logout", logoutRoutes);
+app.use("/cart", cartRoutes);
+app.use("/fav", favRoutes);
+app.use("/orderHistory", orderHistoryRoutes);
+app.use("/checkout", checkoutRoutes);
 
-app.get("/products/new", isLogged, (req, res) => {
-  res.render("products/new");
-});
 
-app.post("/products", isLogged, async (req, res) => {
-  const newProduct = new Products(req.body.product);
-  await newProduct.save();
-  res.redirect(`/products/${newProduct._id}`);
-});
+// app.get("/products", isLogged, async (req, res) => {
+//   const products = await Products.find({});
+//   res.render("products/index", { products });
+// });
 
-app.put("/products/:id", isLogged, async (req, res) => {
-  const { id } = req.params;
-  const product = await Products.findByIdAndUpdate(id, req.body.product);
-  await product.save();
-  res.redirect(`/products/${product._id}`);
-});
+// app.get("/products/new", isLogged, (req, res) => {
+//   res.render("products/new");
+// });
 
-app.get("/products/:id", async (req, res) => {
-  const { id } = req.params;
-  const cart_item = await Cart.find({ product: id });
-  const no_of_people = cart_item.length;
-  const product = await Products.findById(id);
-  res.render("products/show", { product, no_of_people });
-});
+// app.post("/products", isLogged, async (req, res) => {
+//   const newProduct = new Products(req.body.product);
+//   await newProduct.save();
+//   res.redirect(`/products/${newProduct._id}`);
+// });
 
-app.delete("/products/:id", isLogged, async (req, res) => {
-  const { id } = req.params;
-  const deletedProduct = await Products.findByIdAndDelete(id);
-  console.log(deletedProduct);
-  res.redirect("/");
-});
+// app.put("/products/:id", isLogged, async (req, res) => {
+//   const { id } = req.params;
+//   const product = await Products.findByIdAndUpdate(id, req.body.product);
+//   await product.save();
+//   res.redirect(`/products/${product._id}`);
+// });
 
-app.get("/products/:id/edit", isLogged, async (req, res) => {
-  const { id } = req.params;
-  const product = await Products.findById(id);
-  res.render("products/edit", { product });
-});
+// app.get("/products/:id", async (req, res) => {
+//   const { id } = req.params;
+//   const cart_item = await Cart.find({ product: id });
+//   const no_of_people = cart_item.length;
+//   const product = await Products.findById(id);
+//   res.render("products/show", { product, no_of_people });
+// });
 
-app.get("/login", (req, res) => {
-  res.render("Auth/login");
-});
+// app.delete("/products/:id", isLogged, async (req, res) => {
+//   const { id } = req.params;
+//   const deletedProduct = await Products.findByIdAndDelete(id);
+//   console.log(deletedProduct);
+//   res.redirect("/");
+// });
 
-app.post(
-  "/login",
-  storeReturnTo,
-  passport.authenticate("local", { failureRedirect: "/login" }),
-  login
-);
+// app.get("/products/:id/edit", isLogged, async (req, res) => {
+//   const { id } = req.params;
+//   const product = await Products.findById(id);
+//   res.render("products/edit", { product });
+// });
 
-app.get("/signUp", (req, res) => {
-  res.render("Auth/signUp");
-});
+// app.get("/login", (req, res) => {
+//   res.render("Auth/login");
+// });
 
-app.post("/signUp", async (req, res) => {
-  try {
-    const { email, username, password, confirmPassword } = req.body;
-    if (password !== confirmPassword) {
-      return res.redirect("/signUp");
-    }
-    const user = new User({ email, username });
-    const registeredUser = await User.register(user, password);
+// app.post(
+//   "/login",
+//   storeReturnTo,
+//   passport.authenticate("local", { failureRedirect: "/login" }),
+//   login
+// );
 
-    req.login(registeredUser, (err) => {
-      if (err) {
-        return next(err);
-      }
-      res.redirect("/");
-    });
-  } catch (e) {
-    res.redirect("/signUp");
-  }
-});
+// app.get("/signUp", (req, res) => {
+//   res.render("Auth/signUp");
+// });
 
-app.get("/logout", (req, res) => {
-  req.logout(function (err) {
-    if (err) {
-      return next(err);
-    }
-    res.redirect("/login");
-  });
-});
+// app.post("/signUp", async (req, res) => {
+//   try {
+//     const { email, username, password, confirmPassword } = req.body;
+//     if (password !== confirmPassword) {
+//       return res.redirect("/signUp");
+//     }
+//     const user = new User({ email, username });
+//     const registeredUser = await User.register(user, password);
 
-app.get("/cart/:userId", async (req, res) => {
-  const { userId } = req.params;
-  const user = await User.findById(userId);
-  const cart = await Cart.find({ user: userId })
-    .populate({
-      path: "product",
-    })
-    .populate({
-      path: "user",
-    });
-  res.render("cart/index", { cart, user });
-});
+//     req.login(registeredUser, (err) => {
+//       if (err) {
+//         return next(err);
+//       }
+//       res.redirect("/");
+//     });
+//   } catch (e) {
+//     res.redirect("/signUp");
+//   }
+// });
+
+// app.get("/logout", (req, res) => {
+//   req.logout(function (err) {
+//     if (err) {
+//       return next(err);
+//     }
+//     res.redirect("/login");
+//   });
+// });
+
+// app.get("/cart/:userId", async (req, res) => {
+//   const { userId } = req.params;
+//   const user = await User.findById(userId);
+//   const cart = await Cart.find({ user: userId })
+//     .populate({
+//       path: "product",
+//     })
+//     .populate({
+//       path: "user",
+//     });
+//   res.render("cart/index", { cart, user });
+// });
 
 // app.post("/cart/:userId/:id", async (req, res) => {
 //   const { userId, id } = req.params;
 //   const { quantity } = req.body;
+
 //   const currentUser = await User.findById(userId);
 //   const product = await Product.findById(id);
-//   const cartItem = new Cart({
-//     product: product,
-//     quantity: quantity,
-//     user: userId,
-//   });
 
-//   product.quantity = product.quantity - quantity;
-//   console.log(quantity);
-//   console.log(product.quantity);
+//   const cartItem = await Cart.findOne({ product: id, user: userId });
+
+//   if (cartItem) {
+//     cartItem.quantity += parseInt(quantity, 10);
+//     await cartItem.save();
+//   } else {
+//     const newCartItem = new Cart({
+//       product: product,
+//       quantity: parseInt(quantity, 10),
+//       user: userId,
+//     });
+//     await newCartItem.save();
+//     currentUser.products.push(newCartItem);
+//     await currentUser.save();
+//   }
+
+//   product.quantity -= parseInt(quantity, 10);
 //   await product.save();
 
-//   currentUser.products.push(cartItem);
-//   await cartItem.save();
-//   await currentUser.save();
 //   res.redirect(`/cart/${userId}`);
 // });
 
-app.post("/cart/:userId/:id", async (req, res) => {
-  const { userId, id } = req.params;
-  const { quantity } = req.body;
-  const currentUser = await User.findById(userId);
-  const product = await Product.findById(id);
+// app.post("/fav/:userId/:id", async (req, res) => {
+//   const { userId, id } = req.params;
+//   const currentUser = await User.findById(userId);
+//   const product = await Product.findById(id);
 
-  const cartItem = await Cart.findOne({ product: id, user: userId });
+//   if (currentUser.favorites.includes(product._id)) {
+//     return res.redirect(`/fav/${userId}`);
+//   } else {
+//     currentUser.favorites.push(product);
+//     await currentUser.save();
+//     res.redirect(`/products/${id}`);
+//   }
+// });
 
-  if (cartItem) {
-    cartItem.quantity += parseInt(quantity, 10);
-    await cartItem.save();
-  } else {
-    const newCartItem = new Cart({
-      product: product,
-      quantity: parseInt(quantity, 10),
-      user: userId,
-    });
-    await newCartItem.save();
-    currentUser.products.push(newCartItem);
-    await currentUser.save();
-  }
+// app.get("/fav/:userId", async (req, res) => {
+//   const { userId } = req.params;
+//   const user = await User.findById(userId).populate({
+//     path: "favorites",
+//   });
 
-  product.quantity -= parseInt(quantity, 10);
-  await product.save();
+//   res.render("fav/index", { user });
+// });
 
-  res.redirect(`/cart/${userId}`);
-});
+// app.delete("/fav/:userId/:id", async (req, res) => {
+//   const { userId, id } = req.params;
+//   const currentUser = await User.findById(userId);
+//   const product = await Product.findById(id);
 
-// app.get("/cart/:id", isLogged, async (req, res) => {
-//   const { id } = req.params;
-//   const user = await User.findById(id);
-//   res.render("cart/index", { user });
+//   currentUser.favorites.pull(product);
+//   await currentUser.save();
+//   // redirecting to current page
+//   res.redirect(`/products`);
+// });
+
+// app.get("/orderHistory/:userId", async (req, res) => {
+//   const { userId } = req.params;
+
+//   try {
+//     const user = await User.findById(userId);
+//     if (!user) {
+//       return res.status(404).send("User not found");
+//     }
+
+//     // Fetch the order history for the user
+//     const orderHistory = await OrderHistory.find({ user: userId }).populate({
+//       path: "products",
+//     });
+
+//     // if (!orderHistory || orderHistory.length === 0) {
+//     //   return res.status(404).send("Order history is empty");
+//     // }
+
+//     // Send response after fetching order history
+//     res.render("orderHistory/index", { orderHistory, user });
+//   } catch (error) {
+//     console.error("Error while querying the database:", error);
+//     res.status(500).send("Internal Server Error");
+//   }
 // });
 
 // app.get("/checkout/:userId", async (req, res) => {
 //   const { userId } = req.params;
-//   const user = await Cart.findById(userId);
-//   res.send(user);
-//   // res.render("checkout/index", { userId });
-// });
 
-app.get("/orderHistory/:userId", async (req, res) => {
-  const { userId } = req.params;
+//   try {
+//     const user = await User.findById(userId);
+//     if (!user) {
+//       return res.status(404).send("User not found");
+//     }
 
-  try {
-    const user = await User.findById(userId);
-    if (!user) {
-      return res.status(404).send("User not found");
-    }
+//     // Fetch the cart items for the user
+//     const cartItems = await Cart.find({ user: userId }).populate("product");
 
-    // Fetch the order history for the user
-    const orderHistory = await OrderHistory.find({ user: userId }).populate({
-      path: "products",
-    });
+//     if (!cartItems || cartItems.length === 0) {
+//       return res.status(404).send("Cart is empty");
+//     }
 
-    // if (!orderHistory || orderHistory.length === 0) {
-    //   return res.status(404).send("Order history is empty");
-    // }
+//     // Create a new order history with the current cart items
+//     const orderHistory = new OrderHistory({
+//       products: cartItems.map((cartItem) => cartItem.product),
+//       productQuantity: cartItems.map((cartItem) => cartItem.quantity),
+//       user: userId,
+//     });
 
-    // Send response after fetching order history
-    res.render("orderHistory/index", { orderHistory,user });
-  } catch (error) {
-    console.error("Error while querying the database:", error);
-    res.status(500).send("Internal Server Error");
-  }
-});
+//     // Save the new order history
+//     await orderHistory.save();
 
-app.get("/checkout/:userId", async (req, res) => {
-  const { userId } = req.params;
+//     // Update the user's order history with the new order
+//     user.orderHistory.push(orderHistory._id);
+//     await user.save();
 
-  try {
-    const user = await User.findById(userId);
-    if (!user) {
-      return res.status(404).send("User not found");
-    }
+//     // Delete cart items
+//     await Cart.deleteMany({ user: userId });
 
-    // Fetch the cart items for the user
-    const cartItems = await Cart.find({ user: userId }).populate("product");
-
-    if (!cartItems || cartItems.length === 0) {
-      return res.status(404).send("Cart is empty");
-    }
-
-    // Create a new order history with the current cart items
-    const orderHistory = new OrderHistory({
-      products: cartItems.map((cartItem) => cartItem.product),
-      productQuantity: cartItems.map((cartItem) => cartItem.quantity),
-      user: userId,
-    });
-
-    // Save the new order history
-    await orderHistory.save();
-
-    // Update the user's order history with the new order
-    user.orderHistory.push(orderHistory._id);
-    await user.save();
-
-    // Delete cart items
-    await Cart.deleteMany({ user: userId });
-
-    // Send response after saving order history
-    res.render("checkout/index", { items: cartItems });
-  } catch (error) {
-    console.error("Error while querying the database:", error);
-    res.status(500).send("Internal Server Error");
-  }
-});
-
-// app.get("/fakeUser", async (req, res) => {
-//   const user = new User({ email: "a@gmail.com", username: "a" });
-//   const registeredUser = await User.register(user, "monkey");
-//   res.send(registeredUser);
+//     // Send response after saving order history
+//     res.render("checkout/index", { items: cartItems });
+//   } catch (error) {
+//     console.error("Error while querying the database:", error);
+//     res.status(500).send("Internal Server Error");
+//   }
 // });
 
 app.listen(PORT, () => {
