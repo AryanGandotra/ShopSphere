@@ -6,23 +6,26 @@ ShopSphere is a web application that allows users to create and manage their own
 
 ### Prerequisites
 
-*Node.js* - Download and install Node.js from https://nodejs.org/en/download/
+_Node.js_ - Download and install Node.js from https://nodejs.org/en/download/
 
-*MongoDB* - Download and install MongoDB from https://www.mongodb.com/download-center/community
+_MongoDB_ - Download and install MongoDB from https://www.mongodb.com/download-center/community
 
 ### Installing
 
 1. Clone the repository
+
 ```
 git clone https://github.com/AryanGandotra/ShopSphere.git
 ```
 
 2. Install dependencies
+
 ```
 npm install
 ```
 
 3. Start the server
+
 ```
 npm start
 ```
@@ -31,14 +34,25 @@ npm start
 
 ## Built With
 
-* [Node.js](https://nodejs.org/en/) - JavaScript runtime
-* [Express](https://expressjs.com/) - Web framework
-* [MongoDB](https://www.mongodb.com/) - Database
-* [Mongoose](https://mongoosejs.com/) - MongoDB object modeling tool
-* [Passport](http://www.passportjs.org/) - Authentication middleware
-* [Bootstrap](https://getbootstrap.com/) - Front-end component library
-* [EJS](https://ejs.co/) - Templating engine
+- [Node.js](https://nodejs.org/en/) - JavaScript runtime
+- [Express](https://expressjs.com/) - Web framework
+- [MongoDB](https://www.mongodb.com/) - Database
+- [Mongoose](https://mongoosejs.com/) - MongoDB object modeling tool
+- [Passport](http://www.passportjs.org/) - Authentication middleware
+- [Bootstrap](https://getbootstrap.com/) - Front-end component library
+- [EJS](https://ejs.co/) - Templating engine
 
+## Functionalities
+
+- User authentication
+- User authorization
+- User can sell products
+- User can purchase products
+- User can add products to cart
+- User can add products to favorites
+- User can view their order history
+- User can view their cart
+- User can view their favorites
 
 ## Folder Structure
 
@@ -108,6 +122,7 @@ npm start
 ## Demo
 
 ### Home Page
+
 ![Home Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Home%20Page-1.png)
 
 ![Home Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Home%20Page-2.png)
@@ -115,23 +130,28 @@ npm start
 ![Home Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Home%20Page-3.png)
 
 ### Product Page
-![Product Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Product%20Page%20(Admin%20Panel).png)
+
+![Product Page](<https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Product%20Page%20(Admin%20Panel).png>)
 
 ### Cart Page
+
 ![Cart Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Cart.png)
 
 ### Login Page
+
 ![User Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Login%20Page.png)
 
 ### Sign Up Page
+
 ![User Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/SignUp%20Page.png)
 
 ### My Orders Page
+
 ![User Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Order%20History.png)
 
 ### Invoice
-![User Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Invoice.png)
 
+![User Page](https://github.com/AryanGandotra/ShopSphere/blob/main/Demo/Invoice.png)
 
 ## Contribution
 
