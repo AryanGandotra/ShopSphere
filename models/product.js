@@ -29,6 +29,10 @@ const productSchema = new Schema(
       required: [true, "Product Quantity is required"],
       min: 0,
     },
+    rating: {
+      rate: Number,
+      count: Number,
+    },
   },
   { timestamps: true }
 );
