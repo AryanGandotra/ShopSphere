@@ -164,12 +164,14 @@
 @media screen and (max-width: 1000px) {
     .main {
         flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
         gap: 2rem;
     }
 
     .main-login-img {
         width: 100%;
-        height: 50%;
+        height: 30%;
     }
 
     .form-container {
