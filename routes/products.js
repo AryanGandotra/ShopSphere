@@ -3,6 +3,15 @@ const router = express.Router();
 const Products = require("../models/product");
 const Cart = require("../models/cart");
 const { isLogged } = require("../middleware.js");
+const cloudinary = require("cloudinary").v2;
+const cloud_name = process.env.Cloudinary_Cloud_Name;
+const api_key = process.env.Cloudinary_API_key;
+const api_secret = process.env.Cloudinary_API_secret;
+cloudinary.config({
+  cloud_name: cloud_name,
+  api_key: api_key,
+  api_secret: api_secret,
+});
 
 router
   .route("/")
@@ -10,10 +19,35 @@ router
     const products = await Products.find({});
     res.render("products/index", { products });
   })
-  .post(isLogged, async (req, res) => {
-    const newProduct = new Products(req.body.product);
-    await newProduct.save();
-    res.redirect(`/products/${newProduct._id}`);
+  .post(async (req, res) => {
+    try {
+      const files = req.files;
+      console.log(files);
+      console.log(req.body);
+
+      const name = req.body["product[name]"];
+      const category = req.body["product[category]"];
+      const quantity = req.body["product[quantity]"];
+      const description = req.body["product[description]"];
+      const price = req.body["product[price]"];
+
+      const newProduct = new Products({
+        name: name,
+        category: category,
+        description: description,
+        price: price,
+        quantity: quantity,
+      });
+
+      const result = await cloudinary.uploader.upload(files.photo.tempFilePath);
+      newProduct.imageUrl = result.secure_url;
+
+      await newProduct.save();
+      res.redirect(`/products/${newProduct._id}`);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Internal Server Error");
+    }
   });
 
 router.route("/new").get(isLogged, (req, res) => {
