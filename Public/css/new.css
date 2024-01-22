@@ -13,7 +13,7 @@
     margin: 50px auto;
 }
 
-form>div>input{
+form>div>input {
     width: 100%;
     padding: 1.5rem 1rem;
 }
@@ -23,6 +23,16 @@ form>div>input::placeholder {
     font-weight: 200;
     color: #727886;
 }
+
+.img-select{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+
 
 .submit-button {
     margin: 0 auto;
