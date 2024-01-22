@@ -39,7 +39,12 @@ router
         quantity: quantity,
       });
 
-      const result = await cloudinary.uploader.upload(files.photo.tempFilePath);
+      const result = await cloudinary.uploader.upload(
+        files.photo.tempFilePath,
+        {
+          folder: "Products",
+        }
+      );
       newProduct.imageUrl = result.secure_url;
 
       await newProduct.save();
