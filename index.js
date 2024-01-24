@@ -21,6 +21,7 @@ const orderHistoryRoutes = require("./routes/orderHistory");
 const checkoutRoutes = require("./routes/checkout");
 // const fileUpload = require("express-fileupload");
 const bodyParser = require("body-parser");
+var MongoStore = require("connect-mongo")(session);
 
 const { PORT, DB_CONNECTION_STRING } = process.env;
 
@@ -42,10 +43,9 @@ app.set("trust proxy", 1); // trust first proxy
 app.use(
   session({
     secret: "thisshouldbeabettersecret!",
-    store: new SequelizeStore({
-      db: db.sequelize,
-      checkExpirationInterval: 15 * 60 * 1000, // The interval at which to cleanup expired sessions in milliseconds.
-      expiration: 15 * 24 * 60 * 60 * 1000, // The maximum age (in milliseconds) of a valid session.
+    // i am using a mongodb
+    store: new MongoStore({
+      db: mongoose.connection.db,
     }),
     resave: false, // we support the touch method so per the express-session docs this should be set to false
     proxy: true, // if you do SSL outside of node.
