@@ -19,9 +19,8 @@ const cartRoutes = require("./routes/cart");
 const favRoutes = require("./routes/fav");
 const orderHistoryRoutes = require("./routes/orderHistory");
 const checkoutRoutes = require("./routes/checkout");
-const fileUpload = require("express-fileupload");
+// const fileUpload = require("express-fileupload");
 const bodyParser = require("body-parser");
-
 
 const { PORT, DB_CONNECTION_STRING } = process.env;
 
@@ -49,11 +48,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser()); // how to store user in session
 passport.deserializeUser(User.deserializeUser()); // how to get user out of session
 app.use(bodyParser.json());
-app.use(
-  fileUpload({
-    useTempFiles: true,
-  })
-);
+// app.use(fileUpload({}));
 
 mongoose.connect(DB_CONNECTION_STRING, {
   useNewUrlParser: true,
