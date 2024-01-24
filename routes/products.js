@@ -22,8 +22,8 @@ router
   .post(async (req, res) => {
     try {
       const files = req.files;
-      console.log(files);
-      console.log(req.body);
+      // console.log(files);
+      // console.log(req.body);
 
       const name = req.body["product[name]"];
       const category = req.body["product[category]"];
