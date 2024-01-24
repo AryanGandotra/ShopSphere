@@ -35,7 +35,6 @@ const sessionConfig = {
     maxAge: 1000 * 60 * 60 * 24 * 7,
     sameSite: "none",
   },
-  resave: false,
 };
 
 app.set("trust proxy", 1);
