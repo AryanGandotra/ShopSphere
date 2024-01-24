@@ -24,20 +24,35 @@ const bodyParser = require("body-parser");
 
 const { PORT, DB_CONNECTION_STRING } = process.env;
 
-const sessionConfig = {
-  secret: "thisshouldbeabettersecret!",
-  resave: false,
-  saveUninitialized: true,
-  proxy: true,
-  name: "MyCoolWebAppCookieName",
-  cookie: {
-    secure: true, 
-    httpOnly: false,
-    sameSite: "none",
-  },
-};
+// const sessionConfig = {
+//   secret: "thisshouldbeabettersecret!",
+//   resave: false,
+//   saveUninitialized: true,
+//   proxy: true,
+//   name: "MyCoolWebAppCookieName",
+//   cookie: {
+//     secure: true,
+//     httpOnly: false,
+//     sameSite: "none",
+//   },
+// };
 
+app.set("trust proxy", 1); // trust first proxy
 
+app.use(
+  session({
+    secret: "thisshouldbeabettersecret!",
+    store: new SequelizeStore({
+      db: db.sequelize,
+      checkExpirationInterval: 15 * 60 * 1000, // The interval at which to cleanup expired sessions in milliseconds.
+      expiration: 15 * 24 * 60 * 60 * 1000, // The maximum age (in milliseconds) of a valid session.
+    }),
+    resave: false, // we support the touch method so per the express-session docs this should be set to false
+    proxy: true, // if you do SSL outside of node.
+    saveUninitialized: true,
+    cookie: { secure: true, sameSite: "none" },
+  })
+);
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
