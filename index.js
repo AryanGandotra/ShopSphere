@@ -21,22 +21,22 @@ const orderHistoryRoutes = require("./routes/orderHistory");
 const checkoutRoutes = require("./routes/checkout");
 // const fileUpload = require("express-fileupload");
 const bodyParser = require("body-parser");
-var MongoStore = require("connect-mongo")(session);
 
 const { PORT, DB_CONNECTION_STRING } = process.env;
 
 const sessionConfig = {
   secret: "thisshouldbeabettersecret!",
   resave: false,
-  store: MongoStore.create({
-    mongoUrl: DB_CONNECTION_STRING,
-    touchAfter: 24 * 60 * 60,
-  }),
   saveUninitialized: true,
-  proxy: true,
+  store: new (require("connect-mongo")(session))({
+    url: DB_CONNECTION_STRING,
+    touchAfter: 24 * 3600,
+  }),
+
   cookie: {
-    secure: true,
-    httpOnly: false,
+    httpOnly: true,
+    expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+    maxAge: 1000 * 60 * 60 * 24 * 7,
   },
 };
 
