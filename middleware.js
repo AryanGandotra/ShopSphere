@@ -35,7 +35,7 @@ module.exports.isLogged = (req, res, next) => {
     return res.status(401).json({ error: "No token provided" });
   }
 
-  jwt.verify(token, "your_secret_key", (err, decoded) => {
+  jwt.verify(token, "abcdefghijklmnopqrstuvwxyz", (err, decoded) => {
     if (err) {
       return res.status(401).json({ error: "Failed to authenticate token" });
     }
