@@ -44,7 +44,7 @@ app.use(
   session({
     secret: "thisshouldbeabettersecret!",
     // i am using a mongodb
-    store: new MongoStore({
+    store:MongoStore({
       db: mongoose.connection.db,
     }),
     resave: false, // we support the touch method so per the express-session docs this should be set to false
