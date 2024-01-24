@@ -35,6 +35,7 @@ const sessionConfig = {
     maxAge: 1000 * 60 * 60 * 24 * 7,
     sameSite: "none",
   },
+  name: "MyCoolWebAppCookieName",
 };
 
 app.set("trust proxy", 1);
