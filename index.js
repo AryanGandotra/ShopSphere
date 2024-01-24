@@ -27,16 +27,14 @@ const { PORT, DB_CONNECTION_STRING } = process.env;
 const sessionConfig = {
   secret: "thisshouldbeabettersecret!",
   resave: false,
-  proxy: true,
   saveUninitialized: true,
+  proxy: true,
+  name: "MyCoolWebAppCookieName",
   cookie: {
-    httpOnly: true,
-    // secure: true, // only works on https
-    expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
-    maxAge: 1000 * 60 * 60 * 24 * 7,
+    secure: true, 
+    httpOnly: false,
     sameSite: "none",
   },
-  name: "MyCoolWebAppCookieName",
 };
 
 app.set("trust proxy", 1);
