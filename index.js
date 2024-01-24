@@ -33,9 +33,12 @@ const sessionConfig = {
     // secure: true, // only works on https
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
     maxAge: 1000 * 60 * 60 * 24 * 7,
+    sameSite: "none",
   },
+  resave: false,
 };
 
+app.set("trust proxy", 1);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
 app.use(express.urlencoded({ extended: true }));
