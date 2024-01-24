@@ -27,6 +27,7 @@ const { PORT, DB_CONNECTION_STRING } = process.env;
 const sessionConfig = {
   secret: "thisshouldbeabettersecret!",
   resave: false,
+  proxy: true,
   saveUninitialized: true,
   cookie: {
     httpOnly: true,
