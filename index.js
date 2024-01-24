@@ -19,7 +19,7 @@ const cartRoutes = require("./routes/cart");
 const favRoutes = require("./routes/fav");
 const orderHistoryRoutes = require("./routes/orderHistory");
 const checkoutRoutes = require("./routes/checkout");
-// const fileUpload = require("express-fileupload");
+const MongoStore = require("connect-mongo");
 const bodyParser = require("body-parser");
 
 const { PORT, DB_CONNECTION_STRING } = process.env;
@@ -28,9 +28,8 @@ const sessionConfig = {
   secret: "thisshouldbeabettersecret!",
   resave: false,
   saveUninitialized: true,
-  store: new (require("connect-mongo")(session))({
-    url: DB_CONNECTION_STRING,
-    touchAfter: 24 * 3600,
+  store: new MongoStore({
+    mongoUrl: DB_CONNECTION_STRING,
   }),
 
   cookie: {
