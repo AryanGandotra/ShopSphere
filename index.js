@@ -25,34 +25,20 @@ var MongoStore = require("connect-mongo")(session);
 
 const { PORT, DB_CONNECTION_STRING } = process.env;
 
-// const sessionConfig = {
-//   secret: "thisshouldbeabettersecret!",
-//   resave: false,
-//   saveUninitialized: true,
-//   proxy: true,
-//   name: "MyCoolWebAppCookieName",
-//   cookie: {
-//     secure: true,
-//     httpOnly: false,
-//     sameSite: "none",
-//   },
-// };
-
-app.set("trust proxy", 1); // trust first proxy
-
-app.use(
-  session({
-    secret: "thisshouldbeabettersecret!",
-    store: new MongoStore({
-      url: DB_CONNECTION_STRING,
-      touchAfter: 24 * 60 * 60,
-    }),
-    resave: false, // we support the touch method so per the express-session docs this should be set to false
-    proxy: true, // if you do SSL outside of node.
-    saveUninitialized: true,
-    cookie: { secure: true, sameSite: "none" },
-  })
-);
+const sessionConfig = {
+  secret: "thisshouldbeabettersecret!",
+  resave: false,
+  store: MongoStore.create({
+    mongoUrl: DB_CONNECTION_STRING,
+    touchAfter: 24 * 60 * 60,
+  }),
+  saveUninitialized: true,
+  proxy: true,
+  cookie: {
+    secure: true,
+    httpOnly: false,
+  },
+};
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
